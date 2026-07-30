@@ -93,10 +93,7 @@ const Testimonials = () => {
           {/* Scrolling container */}
           <div className="group">
             <div
-              className={`flex gap-6 ${shouldReduceMotion ? '' : 'animate-scroll'}`}
-              style={{
-                width: 'max-content',
-              }}
+              className={`flex gap-6 w-max ${shouldReduceMotion ? '' : 'animate-scroll motion-reduce:animate-none group-hover:[animation-play-state:paused]'}`}
             >
               {doubledTestimonials.map((testimonial, index) => (
                 <div
@@ -131,28 +128,6 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* CSS Keyframes for infinite scroll */}
-      <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-        .group:hover .animate-scroll {
-          animation-play-state: paused;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-scroll {
-            animation: none;
-          }
-        }
-      `}</style>
     </section>
   );
 };

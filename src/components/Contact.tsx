@@ -163,14 +163,14 @@ const Contact = () => {
             {/* Social Icons */}
             <div className="flex gap-3">
               {socialLinks.map((social) => (
-                <a
+                <button
                   key={social.label}
-                  href="#"
+                  type="button"
                   aria-label={social.label}
                   className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-purple/50 hover:shadow-lg hover:shadow-accent-purple/20 transition-all duration-300"
                 >
                   <social.icon className="text-lg" />
-                </a>
+                </button>
               ))}
             </div>
           </motion.div>

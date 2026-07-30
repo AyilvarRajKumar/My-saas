@@ -1,0 +1,26 @@
+{
+  "id": "FEAT-005",
+  "type": "fix",
+  "description": "Address code review findings: move inline <style> from Testimonials.tsx into tailwind.config.js keyframes/animation, and fix social links using buttons to avoid scroll-to-top behavior.",
+  "status": "in_progress",
+  "steps": [
+    "Move @keyframes scroll and animate-scroll class from inline <style> in Testimonials.tsx to tailwind.config.js under theme.extend.keyframes and theme.extend.animation",
+    "Update Testimonials.tsx to use Tailwind animate-scroll utility class and group-hover:[animation-play-state:paused] arbitrary value instead of inline CSS",
+    "Fix social links in Contact.tsx to use button elements instead of <a href='#'> to avoid scroll-to-top",
+    "Fix social links in Footer.tsx to use button elements instead of <a href='#'> to avoid scroll-to-top",
+    "Run npm run build to verify changes compile cleanly",
+    "Commit all changes"
+  ],
+  "acceptance_criteria": [
+    "No inline <style> tag in Testimonials.tsx",
+    "Tailwind config defines scroll keyframes and animate-scroll animation",
+    "Testimonials carousel still scrolls infinitely and pauses on hover",
+    "Social links do not navigate or scroll to top when clicked",
+    "npm run build succeeds"
+  ],
+  "verification": [
+    "source $HOME/.nvm/nvm.sh && cd /projects/sandbox/My-saas && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": null
+}
