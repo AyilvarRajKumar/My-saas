@@ -1,0 +1,32 @@
+{
+  "project_type": "React SPA with Vite bundler and Tailwind CSS - SaaS landing page",
+  "language": "TypeScript/TSX",
+  "build_system": "Vite via npm scripts",
+  "test_framework": "Build verification (vite build) - no unit tests needed for static landing page",
+  "build_command": "source $HOME/.nvm/nvm.sh && npm run build",
+  "test_command": "source $HOME/.nvm/nvm.sh && npm run build",
+  "verification_instructions": "1. Run npm run build to confirm production build succeeds. 2. Check that dist/ folder is generated with index.html and assets.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "source $HOME/.nvm/nvm.sh && npm install",
+  "environment_constraints": "Node v22 available via nvm (must source nvm.sh before using node/npm). Full internet access for npm packages.",
+  "contribution_requirements": "Work on feature/saas-landing-page branch. Commit all code there.",
+  "key_patterns": "React functional components with TypeScript, Tailwind CSS utility classes, Framer Motion for animations, component-based architecture with each section as its own component",
+  "relevant_files": [
+    "src/App.tsx",
+    "src/main.tsx",
+    "src/components/Header.tsx",
+    "src/components/Hero.tsx",
+    "src/components/Services.tsx",
+    "src/components/Process.tsx",
+    "src/components/Portfolio.tsx",
+    "src/components/Testimonials.tsx",
+    "src/components/Pricing.tsx",
+    "src/components/Contact.tsx",
+    "src/components/Footer.tsx",
+    "tailwind.config.js",
+    "vite.config.ts",
+    "index.html",
+    "package.json"
+  ],
+  "directory_structure": "src/ - main source with components/, assets/. Public files in public/. Config at root level (vite.config.ts, tailwind.config.js, tsconfig.json)."
+}

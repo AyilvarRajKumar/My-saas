@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-004",
+  "type": "feat",
+  "description": "Implement Testimonials (auto-scrolling glass cards), Pricing (3-tier glass cards with elevated popular tier), Contact form (two-column layout with validation and glass styling), and Footer (multi-column with newsletter signup). Final polish with prefers-reduced-motion support and commit all work.",
+  "status": "pending",
+  "steps": [
+    "Implement src/components/Testimonials.tsx: Section heading. Auto-scrolling horizontal carousel of glass cards (infinite scroll animation using CSS or Framer Motion). Each card has: client photo (placeholder avatar), quote text, client name, and role. Cards styled with glassmorphism. Include navigation dots or swipe support for mobile.",
+    "Implement src/components/Pricing.tsx: Section heading. 3-tier pricing cards (Starter, Professional/Popular, Enterprise). Middle tier slightly elevated/scaled with accent glow border to highlight as 'Most Popular'. Each card shows: tier name, price, feature list with checkmarks, CTA button. Glass card styling with pill-shaped CTA buttons. Cards fade in with stagger on scroll.",
+    "Implement src/components/Contact.tsx: Two-column layout. Left column: heading ('Let's Work Together'), contact info (email, phone, location), social media icon links with glass hover effect. Right column: glassy form card with fields - Name (required), Email (required with validation), Phone (optional), Service Interested In (dropdown with the 6 services), Message (textarea, required). Rounded gradient 'Send Message' submit button. Form validation with inline error states (red glow on invalid fields). Success state animation on submit (just UI, no backend).",
+    "Implement src/components/Footer.tsx: Darker background than body. Multi-column layout: Column 1 - Logo + tagline. Column 2 - Quick Links (Home, Services, Work, About, Contact). Column 3 - Services list (all 6). Column 4 - Social icons (rounded glass icon buttons with hover glow) + Newsletter signup with email input and subscribe button. Bottom bar with copyright and Privacy/Terms links.",
+    "Add global smooth scroll behavior (CSS scroll-behavior: smooth on html element) in index.css",
+    "Ensure all animations respect prefers-reduced-motion media query",
+    "Run npm run build to verify everything compiles",
+    "Commit all changes to the feature/saas-landing-page branch"
+  ],
+  "acceptance_criteria": [
+    "Testimonials section has auto-scrolling glass card carousel",
+    "Pricing section shows 3 tiers with elevated popular tier",
+    "Contact form has all specified fields with validation UI",
+    "Footer has multi-column layout with newsletter signup",
+    "All animations respect prefers-reduced-motion",
+    "npm run build succeeds",
+    "All work is committed to feature/saas-landing-page branch"
+  ],
+  "verification": [
+    "source $HOME/.nvm/nvm.sh && cd /projects/sandbox/My-saas && npm run build",
+    "git log --oneline -5 to confirm commits exist"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

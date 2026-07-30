@@ -1,0 +1,25 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Implement the Header/Navbar and Hero section with full glassmorphism styling, scroll-based opacity changes, mobile hamburger menu, hero headline with gradient text, dual CTAs, floating gradient blobs with parallax, trust bar with client logos/stats, and scroll-triggered fade-in animations using Framer Motion.",
+  "status": "pending",
+  "steps": [
+    "Implement src/components/Header.tsx: sticky navbar with glass background (backdrop-blur, semi-transparent bg), logo on left, nav links (Home, Services, Work, About, Contact) with smooth scroll to sections, pill-shaped 'Book a Call' CTA button with gradient fill on right. Add scroll listener that increases opacity/blur as user scrolls. Implement mobile hamburger menu with animated slide-in glass panel.",
+    "Implement src/components/Hero.tsx: Large bold headline (56-96px desktop) with gradient accent text, supporting subheadline in muted gray (#a1a1aa). Two CTAs - primary gradient pill button and secondary ghost/outline pill button. Floating gradient blob composition in background with parallax effect (move at different speed on scroll using framer-motion useScroll/useTransform). Trust bar below with stats like '50+ Projects Delivered', '100+ Happy Clients', '5+ Years Experience'.",
+    "Add shared animation variants/utilities: create src/utils/animations.ts with reusable Framer Motion variants for fade-in-up, fade-in-left, fade-in-right, stagger children, and scale-in animations.",
+    "Ensure prefers-reduced-motion is respected: wrap motion in a check or use Framer Motion's built-in reduced motion support.",
+    "Verify npm run build still passes after implementation"
+  ],
+  "acceptance_criteria": [
+    "Header is sticky with glassmorphism effect and becomes more opaque on scroll",
+    "Mobile hamburger menu toggles a glass panel with nav links",
+    "Hero has large gradient headline, two styled CTAs, floating blobs, and trust bar",
+    "Scroll animations work via Framer Motion",
+    "npm run build succeeds"
+  ],
+  "verification": [
+    "source $HOME/.nvm/nvm.sh && cd /projects/sandbox/My-saas && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
