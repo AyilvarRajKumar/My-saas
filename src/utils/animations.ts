@@ -143,23 +143,6 @@ export const elasticScale: Variants = {
   },
 };
 
-// Ambient glow pulse for decorative elements
-export const glowPulse: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.8,
-  },
-  visible: {
-    opacity: [0.4, 0.8, 0.4],
-    scale: [0.95, 1.05, 0.95],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    },
-  },
-};
-
 // 3D perspective stagger container with depth
 export const stagger3DContainer: Variants = {
   hidden: { opacity: 0 },

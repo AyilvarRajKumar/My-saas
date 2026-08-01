@@ -43,9 +43,9 @@ function App() {
           <Contact />
         </ScrollSection>
 
-        <ScrollSection index={6} zIndex={70} topOffset={120}>
+        <div style={{ position: 'relative', zIndex: 70 }}>
           <Footer />
-        </ScrollSection>
+        </div>
       </div>
     </SmoothScroll>
   );

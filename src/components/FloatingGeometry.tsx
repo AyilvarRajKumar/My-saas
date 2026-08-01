@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
-import { Canvas, useFrame, invalidate } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -114,13 +114,7 @@ const FloatingOctahedron = () => {
   );
 };
 
-const Scene = ({ isVisible }: { isVisible: boolean }) => {
-  useFrame(() => {
-    if (isVisible) {
-      invalidate();
-    }
-  });
-
+const Scene = () => {
   return (
     <>
       <ambientLight intensity={0.3} />
@@ -140,9 +134,6 @@ const FloatingGeometry = () => {
   const handleVisibilityChange = useCallback((entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
     setIsVisible(entry.isIntersecting);
-    if (entry.isIntersecting) {
-      invalidate();
-    }
   }, []);
 
   useEffect(() => {
@@ -162,15 +153,16 @@ const FloatingGeometry = () => {
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <Canvas
-        camera={{ position: [0, 0, 8], fov: 45 }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
-        frameloop="demand"
-      >
-        <Scene isVisible={isVisible} />
-      </Canvas>
+      {isVisible && (
+        <Canvas
+          camera={{ position: [0, 0, 8], fov: 45 }}
+          dpr={[1, 1.5]}
+          gl={{ antialias: true, alpha: true }}
+          style={{ background: 'transparent' }}
+        >
+          <Scene />
+        </Canvas>
+      )}
     </div>
   );
 };
