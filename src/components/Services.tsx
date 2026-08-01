@@ -8,6 +8,7 @@ import {
   HiUserGroup,
 } from 'react-icons/hi';
 import { fadeInUp, staggerContainer } from '../utils/animations';
+import BorderGlow from './BorderGlow';
 
 const services = [
   {
@@ -88,15 +89,28 @@ const Services = () => {
             <motion.div
               key={service.title}
               variants={shouldReduceMotion ? undefined : fadeInUp}
-              className="group backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-accent-purple/20 hover:border-white/20"
             >
-              <service.icon className="text-4xl text-accent-purple mb-5 group-hover:text-accent-cyan transition-colors duration-300" />
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {service.description}
-              </p>
+              <BorderGlow
+                edgeSensitivity={30}
+                glowColor="270 60 70"
+                backgroundColor="#12121a"
+                borderRadius={24}
+                glowRadius={40}
+                glowIntensity={1.0}
+                coneSpread={25}
+                animated={false}
+                colors={['#a855f7', '#06b6d4', '#a855f7']}
+              >
+                <div className="group p-8">
+                  <service.icon className="text-4xl text-accent-purple mb-5 group-hover:text-accent-cyan transition-colors duration-300" />
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+              </BorderGlow>
             </motion.div>
           ))}
         </motion.div>
