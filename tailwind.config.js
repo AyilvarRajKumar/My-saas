@@ -21,7 +21,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'Georgia', 'serif'],
+        display: ['Boska', 'Georgia', 'serif'],
       },
       keyframes: {
         scroll: {
