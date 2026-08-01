@@ -11,8 +11,21 @@
   --color-text-primary: #ffffff;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+html.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -23,6 +36,24 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Perspective container for 3D depth during scroll */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+/* Scroll section stacking infrastructure */
+.scroll-section-wrapper {
+  min-height: 100vh;
+}
+
+.scroll-section-inner {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  will-change: transform, opacity;
 }
 
 @layer components {

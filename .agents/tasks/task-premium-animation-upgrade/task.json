@@ -1,0 +1,7 @@
+{
+  "task_id": "task-premium-animation-upgrade",
+  "task_description": "Major animation and visual upgrade for the RudraThings SaaS landing page. Add Lenis smooth scrolling with scroll-triggered stacking sections, 3D floating geometry via React Three Fiber, 3D perspective tilt cards, premium entrance animations with parallax depth, and overall visually impressive premium feel.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}

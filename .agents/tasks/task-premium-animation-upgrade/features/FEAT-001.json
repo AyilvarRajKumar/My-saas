@@ -1,0 +1,26 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Install Lenis smooth scroll library and React Three Fiber (with drei) for 3D elements. Set up the smooth scroll provider in App.tsx and create a scroll-stacking layout system where sections rise up and pin/stack on screen as the user scrolls.",
+  "status": "in_progress",
+  "steps": [
+    "Run 'bun add lenis @react-three/fiber @react-three/drei three' and 'bun add -d @types/three' to install smooth scrolling and 3D libraries",
+    "Create src/components/SmoothScroll.tsx - a Lenis smooth scroll wrapper component that initializes Lenis with lerp ~0.075 for buttery smooth scrolling, integrates with Framer Motion's scroll progress via requestAnimationFrame",
+    "Create src/components/ScrollSection.tsx - a reusable wrapper that implements the 'stacking cards' scroll effect. Each section should use CSS position: sticky with increasing top offsets so they stack on top of each other as the user scrolls. Use Framer Motion useScroll + useTransform for scale-down and opacity transitions as sections get pushed behind by the next one. Each section gets a slight scale reduction (0.95) and subtle shadow when stacked behind.",
+    "Update src/App.tsx to wrap the app in the SmoothScroll provider and wrap each section (Services, Process, Portfolio, Testimonials, Pricing, Contact) in ScrollSection with incremental z-index and top offset values. Hero section stays as the first unpinned full-screen section.",
+    "Update src/index.css to add the necessary scroll-stacking CSS: html/body overflow handling for Lenis, section minimum heights of 100vh, perspective container for 3D depth during scroll, and smooth will-change hints for GPU acceleration",
+    "Update tailwind.config.js if needed to add any custom utilities for the stacking effect"
+  ],
+  "acceptance_criteria": [
+    "Lenis smooth scroll is active - scrolling feels buttery smooth with momentum",
+    "Sections rise up from below and stack on screen with sticky positioning as user scrolls",
+    "Each stacked section slightly scales down (parallax depth) when covered by the next",
+    "The visual hierarchy is maintained - sections feel like cards stacking",
+    "Build passes without TypeScript errors: bun run build succeeds"
+  ],
+  "verification": [
+    "Run 'bun run build' and confirm zero errors in output"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

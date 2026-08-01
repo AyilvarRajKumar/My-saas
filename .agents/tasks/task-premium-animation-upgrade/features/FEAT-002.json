@@ -1,0 +1,34 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Add 3D elements and premium visual effects across all sections. Add a floating 3D geometric scene in the Hero using React Three Fiber, enhance cards with 3D perspective tilt effects, upgrade all section animations with parallax depth and elegant entrance transitions.",
+  "status": "pending",
+  "steps": [
+    "Create src/components/FloatingGeometry.tsx - a React Three Fiber Canvas component for the Hero section. Render floating 3D geometric shapes (icosahedron, torus, octahedron) with a gradient shader material matching the brand colors (purple #a855f7, cyan #06b6d4). Shapes should slowly rotate and float with sine-wave motion. Use drei's Float component for organic movement. Keep it performant with low poly counts and frameloop='demand' or similar optimization.",
+    "Create src/components/TiltCard.tsx - a reusable 3D perspective tilt card component. On mouse move, calculate rotation using the mouse position relative to card center (rotateX/rotateY up to 15deg). Use CSS transform with perspective(1000px). Add a subtle light/shine gradient that follows the cursor. Smooth spring transition on mouse leave back to flat. This replaces the existing inline tilt logic in Portfolio.tsx with a cleaner, reusable component.",
+    "Update src/components/Hero.tsx - integrate the FloatingGeometry component as a background/side element. Add a subtle parallax depth effect where the text content moves at a different rate than the 3D shapes. Enhance the gradient blobs with more sophisticated animation (morphing shapes or pulsing). Add a scroll-based fade-out so the hero content elegantly dissolves as user scrolls into the next section.",
+    "Update src/components/Services.tsx - wrap each service card in TiltCard for 3D hover effects. Add staggered entrance animations with scale + rotation (cards should appear to flip/rotate in from slight 3D angles). Add floating particle dots or subtle grid pattern in the section background for depth.",
+    "Update src/components/Portfolio.tsx - replace the existing inline tilt with TiltCard component. Add a parallax depth effect where cards at different grid positions have slightly different scroll speeds. Add a subtle glow/reflection effect on hover.",
+    "Update src/components/Process.tsx - enhance the timeline with 3D depth. Steps should appear to emerge from a vanishing point with perspective transform. The connecting line should have a glowing animated gradient that pulses. Add subtle floating dots/particles around the timeline.",
+    "Update src/components/Pricing.tsx - add 3D tilt to pricing cards using TiltCard. The 'popular' card should have a constant subtle floating animation (translateY oscillation). Add a radial gradient glow behind the popular card.",
+    "Update src/components/Testimonials.tsx - add depth to the carousel with 3D perspective on the scrolling container. Cards further from center should appear to recede (smaller scale, rotated slightly on Y axis). Add subtle parallax between the heading and carousel.",
+    "Update src/components/Contact.tsx - add a subtle 3D floating animation to the form card. The info column icons should have staggered bounce-in animations. Add a gradient mesh background element behind the section.",
+    "Update src/utils/animations.ts - add new sophisticated animation variants: flipInX (3D card flip entrance), rotateInFromLeft/Right (3D rotation entrance), floatUpAndFade (parallax scroll-based fade), elasticScale (bouncy scale entrance), glowPulse (for ambient elements). These should use spring physics with proper damping/stiffness values for premium feel.",
+    "Update src/index.css - add CSS for 3D perspective containers (preserve-3d, perspective utilities), floating animation keyframes, ambient glow effects, and particle/dot patterns as CSS background patterns. Add a subtle noise texture overlay for premium feel."
+  ],
+  "acceptance_criteria": [
+    "Hero section has floating 3D geometric shapes rendered with React Three Fiber",
+    "Cards across Services, Portfolio, Pricing sections have smooth 3D perspective tilt on hover",
+    "Each section has unique, elegant entrance animation with 3D depth (not just simple fade-in-up)",
+    "Process timeline has glowing animated gradient line and 3D perspective emergence",
+    "Testimonial carousel has 3D depth with perspective transforms",
+    "Overall feel is premium and visually impressive with smooth 60fps animations",
+    "Reduced motion preferences are still respected",
+    "Build passes: bun run build succeeds with zero errors"
+  ],
+  "verification": [
+    "Run 'bun run build' and confirm zero errors in output"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
