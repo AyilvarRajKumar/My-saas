@@ -2,7 +2,7 @@
   "id": "FEAT-003",
   "type": "fix",
   "description": "Fix 5 issues identified in semantic review: Lenis rAF leak, Three.js uncapped render loop, scroll-section clipping, footer positioning, and CSS/Framer Motion transform conflict.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "Fix SmoothScroll.tsx: Store rAF ID and cancelAnimationFrame before lenis.destroy() on unmount",
     "Fix FloatingGeometry.tsx: Switch Canvas to frameloop='demand' and use invalidate() pattern for visibility-gated rendering",
@@ -23,5 +23,5 @@
     "Run 'bun run build' and confirm zero errors in output"
   ],
   "blocked_reason": null,
-  "findings": null
+  "findings": "All 5 review issues fixed. Build passes cleanly. The invalidate() import from @react-three/fiber works correctly with frameloop='demand'. The nested div wrapper approach for animate-float-slow cleanly separates CSS animations from Framer Motion transform control."
 }
