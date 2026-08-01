@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { useState, useCallback } from 'react';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import type { Variants } from 'framer-motion';
+import { floatUpAndFade, stagger3DContainer } from '../utils/animations';
+import TiltCard from './TiltCard';
 
 interface Project {
   title: string;
@@ -41,81 +42,72 @@ const projects: Project[] = [
   },
 ];
 
-interface TiltState {
-  rotateX: number;
-  rotateY: number;
-}
-
-const PortfolioCard = ({ project }: { project: Project }) => {
-  const [tilt, setTilt] = useState<TiltState>({ rotateX: 0, rotateY: 0 });
+const PortfolioCard = ({ project, index }: { project: Project; index: number }) => {
   const shouldReduceMotion = useReducedMotion();
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (shouldReduceMotion) return;
-      const card = e.currentTarget;
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -10;
-      const rotateY = ((x - centerX) / centerX) * 10;
-      setTilt({ rotateX, rotateY });
+  // Parallax depth: each row gets slightly different animation delay
+  const depthVariant: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 60 + (index % 3) * 10,
+      scale: 0.92,
+      rotateX: 8,
     },
-    [shouldReduceMotion]
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    setTilt({ rotateX: 0, rotateY: 0 });
-  }, []);
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 150,
+        damping: 20,
+        mass: 0.7,
+        delay: (index % 3) * 0.05,
+      },
+    },
+  };
 
   return (
     <motion.div
-      variants={shouldReduceMotion ? undefined : fadeInUp}
-      className="group relative rounded-3xl overflow-hidden aspect-[4/3] cursor-pointer"
-      style={{ perspective: '1000px' }}
+      variants={shouldReduceMotion ? undefined : depthVariant}
+      className="group"
     >
-      <div
-        className="w-full h-full transition-transform duration-200 ease-out"
-        style={{
-          transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-        }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Gradient Background (placeholder for project image) */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-80`}
-        />
+      <TiltCard maxTilt={12} className="aspect-[4/3] rounded-3xl overflow-hidden">
+        <div className="relative w-full h-full rounded-3xl overflow-hidden cursor-pointer">
+          {/* Gradient Background */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-80`}
+          />
 
-        {/* Glass overlay */}
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]" />
+          {/* Glass overlay */}
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]" />
 
-        {/* Project Title centered */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h3 className="text-xl font-bold text-white text-center px-4 drop-shadow-lg">
-            {project.title}
-          </h3>
-        </div>
+          {/* Project Title centered */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h3 className="text-xl font-bold text-white text-center px-4 drop-shadow-lg">
+              {project.title}
+            </h3>
+          </div>
 
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-          <h3 className="text-xl font-bold text-white mb-2">
-            {project.title}
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-xs font-medium bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white"
-              >
-                {tag}
-              </span>
-            ))}
+          {/* Hover Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <h3 className="text-xl font-bold text-white mb-2">
+              {project.title}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs font-medium bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </TiltCard>
     </motion.div>
   );
 };
@@ -132,16 +124,16 @@ const Portfolio = () => {
           initial={shouldReduceMotion ? undefined : 'hidden'}
           whileInView={shouldReduceMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.3 }}
-          variants={shouldReduceMotion ? undefined : staggerContainer}
+          variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
           <motion.h2
-            variants={shouldReduceMotion ? undefined : fadeInUp}
+            variants={shouldReduceMotion ? undefined : floatUpAndFade}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
             Our <span className="gradient-text">Work</span>
           </motion.h2>
           <motion.p
-            variants={shouldReduceMotion ? undefined : fadeInUp}
+            variants={shouldReduceMotion ? undefined : floatUpAndFade}
             className="text-gray-400 max-w-2xl mx-auto text-lg"
           >
             Showcasing our finest digital creations
@@ -154,10 +146,11 @@ const Portfolio = () => {
           initial={shouldReduceMotion ? undefined : 'hidden'}
           whileInView={shouldReduceMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.1 }}
-          variants={shouldReduceMotion ? undefined : staggerContainer}
+          variants={shouldReduceMotion ? undefined : stagger3DContainer}
+          style={{ perspective: '1200px' }}
         >
-          {projects.map((project) => (
-            <PortfolioCard key={project.title} project={project} />
+          {projects.map((project, index) => (
+            <PortfolioCard key={project.title} project={project} index={index} />
           ))}
         </motion.div>
       </div>

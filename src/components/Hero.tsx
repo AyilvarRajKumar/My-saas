@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, lazy, Suspense } from 'react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
+
+const FloatingGeometry = lazy(() => import('./FloatingGeometry'));
 
 const stats = [
   { value: '50+', label: 'Projects Delivered' },
@@ -22,6 +24,13 @@ const Hero = () => {
   const blob2Y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const blob3Y = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
+  // Scroll-based fade out and parallax for hero content
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
+
+  // 3D geometry parallax (moves slower for depth effect)
+  const geometryY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+
   const animationProps = shouldReduceMotion
     ? { initial: undefined, animate: undefined, variants: undefined }
     : {};
@@ -32,8 +41,20 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden"
     >
+      {/* 3D Floating Geometry Background */}
+      {!shouldReduceMotion && (
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ y: geometryY }}
+        >
+          <Suspense fallback={null}>
+            <FloatingGeometry />
+          </Suspense>
+        </motion.div>
+      )}
+
       {/* Floating Gradient Blobs */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true">
         <motion.div
           style={shouldReduceMotion ? {} : { y: blob1Y }}
           className="absolute -top-20 -left-32 w-[500px] h-[500px] bg-accent-purple/30 rounded-full blur-3xl"
@@ -48,9 +69,10 @@ const Hero = () => {
         />
       </div>
 
-      {/* Hero Content */}
+      {/* Hero Content with scroll fade-out */}
       <motion.div
         className="relative z-10 max-w-5xl text-center"
+        style={shouldReduceMotion ? {} : { opacity: contentOpacity, y: contentY }}
         variants={shouldReduceMotion ? undefined : staggerContainer}
         initial={shouldReduceMotion ? undefined : 'hidden'}
         animate={shouldReduceMotion ? undefined : 'visible'}

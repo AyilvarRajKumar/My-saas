@@ -2,7 +2,7 @@
   "id": "FEAT-002",
   "type": "feat",
   "description": "Add 3D elements and premium visual effects across all sections. Add a floating 3D geometric scene in the Hero using React Three Fiber, enhance cards with 3D perspective tilt effects, upgrade all section animations with parallax depth and elegant entrance transitions.",
-  "status": "pending",
+  "status": "in_progress",
   "steps": [
     "Create src/components/FloatingGeometry.tsx - a React Three Fiber Canvas component for the Hero section. Render floating 3D geometric shapes (icosahedron, torus, octahedron) with a gradient shader material matching the brand colors (purple #a855f7, cyan #06b6d4). Shapes should slowly rotate and float with sine-wave motion. Use drei's Float component for organic movement. Keep it performant with low poly counts and frameloop='demand' or similar optimization.",
     "Create src/components/TiltCard.tsx - a reusable 3D perspective tilt card component. On mouse move, calculate rotation using the mouse position relative to card center (rotateX/rotateY up to 15deg). Use CSS transform with perspective(1000px). Add a subtle light/shine gradient that follows the cursor. Smooth spring transition on mouse leave back to flat. This replaces the existing inline tilt logic in Portfolio.tsx with a cleaner, reusable component.",

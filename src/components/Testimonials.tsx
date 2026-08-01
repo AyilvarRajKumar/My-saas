@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { floatUpAndFade, stagger3DContainer } from '../utils/animations';
 
 const testimonials = [
   {
@@ -67,33 +67,43 @@ const Testimonials = () => {
           initial={shouldReduceMotion ? undefined : 'hidden'}
           whileInView={shouldReduceMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.3 }}
-          variants={shouldReduceMotion ? undefined : staggerContainer}
+          variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
           <motion.h2
-            variants={shouldReduceMotion ? undefined : fadeInUp}
+            variants={shouldReduceMotion ? undefined : floatUpAndFade}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
             What Our <span className="gradient-text">Clients Say</span>
           </motion.h2>
           <motion.p
-            variants={shouldReduceMotion ? undefined : fadeInUp}
+            variants={shouldReduceMotion ? undefined : floatUpAndFade}
             className="text-gray-400 max-w-2xl mx-auto text-lg"
           >
             Trusted by innovative companies around the world
           </motion.p>
         </motion.div>
 
-        {/* Carousel */}
-        <div className="relative">
-          {/* Scrolling container */}
-          <div className="group">
+        {/* Carousel with 3D perspective */}
+        <div className="relative" style={{ perspective: '1200px' }}>
+          {/* Scrolling container with subtle 3D perspective tilt */}
+          <motion.div
+            className="group"
+            initial={shouldReduceMotion ? undefined : { rotateX: 3 }}
+            whileInView={shouldReduceMotion ? undefined : { rotateX: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            style={{ transformStyle: 'preserve-3d' }}
+          >
             <div
               className={`flex gap-6 w-max ${shouldReduceMotion ? '' : 'animate-scroll motion-reduce:animate-none group-hover:[animation-play-state:paused]'}`}
             >
               {doubledTestimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.name}-${index}`}
-                  className="min-w-[350px] max-w-[350px] bg-surface/80 border border-white/10 rounded-3xl p-8 flex flex-col"
+                  className="min-w-[350px] max-w-[350px] bg-surface/80 border border-white/10 rounded-3xl p-8 flex flex-col hover:border-accent-purple/30 transition-all duration-300 hover:scale-[1.02]"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                  }}
                 >
                   {/* Quote */}
                   <p className="text-gray-300 italic leading-relaxed mb-6 flex-1">
@@ -119,10 +129,9 @@ const Testimonials = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-
     </section>
   );
 };

@@ -7,7 +7,7 @@ import {
   HiCheck,
 } from 'react-icons/hi';
 import { FiTwitter, FiLinkedin, FiInstagram, FiDribbble } from 'react-icons/fi';
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from '../utils/animations';
+import { rotateInFromLeft, rotateInFromRight, elasticScale, stagger3DContainer } from '../utils/animations';
 
 const services = [
   'Web Development',
@@ -100,19 +100,28 @@ const Contact = () => {
     { icon: FiDribbble, label: 'Dribbble' },
   ];
 
+  const contactInfoItems = [
+    { icon: HiMail, text: 'hello@rudrathings.agency' },
+    { icon: HiPhone, text: '+91 40 1234 5678' },
+    { icon: HiLocationMarker, text: 'Hitech City, Hyderabad, Telangana, India' },
+  ];
+
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="py-24 px-6 relative">
+      {/* Gradient mesh background */}
+      <div className="absolute inset-0 gradient-mesh pointer-events-none" aria-hidden="true" />
+
+      <div className="max-w-7xl mx-auto relative">
         {/* Section Heading */}
         <motion.div
           className="text-center mb-16"
           initial={shouldReduceMotion ? undefined : 'hidden'}
           whileInView={shouldReduceMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.3 }}
-          variants={shouldReduceMotion ? undefined : staggerContainer}
+          variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
           <motion.h2
-            variants={shouldReduceMotion ? undefined : fadeInUp}
+            variants={shouldReduceMotion ? undefined : elasticScale}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
             Let&apos;s <span className="gradient-text">Work Together</span>
@@ -126,7 +135,7 @@ const Contact = () => {
             initial={shouldReduceMotion ? undefined : 'hidden'}
             whileInView={shouldReduceMotion ? undefined : 'visible'}
             viewport={{ once: true, amount: 0.2 }}
-            variants={shouldReduceMotion ? undefined : fadeInLeft}
+            variants={shouldReduceMotion ? undefined : rotateInFromLeft}
             className="flex flex-col justify-center"
           >
             <h3 className="text-2xl font-semibold text-white mb-4">
@@ -138,49 +147,57 @@ const Contact = () => {
               extraordinary together.
             </p>
 
-            {/* Contact Info */}
-            <div className="space-y-4 mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                  <HiMail className="text-accent-purple" />
-                </div>
-                <span className="text-gray-300">hello@rudrathings.agency</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                  <HiPhone className="text-accent-purple" />
-                </div>
-                <span className="text-gray-300">+91 40 1234 5678</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                  <HiLocationMarker className="text-accent-purple" />
-                </div>
-                <span className="text-gray-300">Hitech City, Hyderabad, Telangana, India</span>
-              </div>
-            </div>
+            {/* Contact Info with staggered bounce-in */}
+            <motion.div
+              className="space-y-4 mb-8"
+              initial={shouldReduceMotion ? undefined : 'hidden'}
+              whileInView={shouldReduceMotion ? undefined : 'visible'}
+              viewport={{ once: true }}
+              variants={shouldReduceMotion ? undefined : stagger3DContainer}
+            >
+              {contactInfoItems.map((item) => (
+                <motion.div
+                  key={item.text}
+                  className="flex items-center gap-4"
+                  variants={shouldReduceMotion ? undefined : elasticScale}
+                >
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                    <item.icon className="text-accent-purple" />
+                  </div>
+                  <span className="text-gray-300">{item.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
 
-            {/* Social Icons */}
-            <div className="flex gap-3">
+            {/* Social Icons with staggered bounce */}
+            <motion.div
+              className="flex gap-3"
+              initial={shouldReduceMotion ? undefined : 'hidden'}
+              whileInView={shouldReduceMotion ? undefined : 'visible'}
+              viewport={{ once: true }}
+              variants={shouldReduceMotion ? undefined : stagger3DContainer}
+            >
               {socialLinks.map((social) => (
-                <button
+                <motion.button
                   key={social.label}
                   type="button"
                   aria-label={social.label}
+                  variants={shouldReduceMotion ? undefined : elasticScale}
                   className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-purple/50 hover:shadow-lg hover:shadow-accent-purple/20 transition-all duration-300"
                 >
                   <social.icon className="text-lg" />
-                </button>
+                </motion.button>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right Column - Form */}
+          {/* Right Column - Form with floating effect */}
           <motion.div
             initial={shouldReduceMotion ? undefined : 'hidden'}
             whileInView={shouldReduceMotion ? undefined : 'visible'}
             viewport={{ once: true, amount: 0.2 }}
-            variants={shouldReduceMotion ? undefined : fadeInRight}
+            variants={shouldReduceMotion ? undefined : rotateInFromRight}
+            className={!shouldReduceMotion ? 'animate-float-slow' : ''}
           >
             <form
               onSubmit={handleSubmit}
