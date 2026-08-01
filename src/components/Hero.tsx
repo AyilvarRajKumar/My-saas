@@ -59,7 +59,7 @@ const Hero = () => {
         {/* Headline */}
         <motion.h1
           variants={shouldReduceMotion ? undefined : fadeInUp}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6"
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-tight mb-6 tracking-tight"
         >
           We Build{' '}
           <span className="gradient-text">Digital Products</span>

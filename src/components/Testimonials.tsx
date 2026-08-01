@@ -4,7 +4,7 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 const testimonials = [
   {
     quote:
-      'NEXUS transformed our outdated platform into a modern, high-converting SaaS product. Our user engagement increased by 340% within the first quarter.',
+      'RudraThings transformed our outdated platform into a modern, high-converting SaaS product. Our user engagement increased by 340% within the first quarter.',
     name: 'Sarah Chen',
     role: 'CEO, CloudMetrics',
     initials: 'SC',
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     quote:
-      'Working with NEXUS felt like having an in-house team. They understood our vision from day one and executed it flawlessly across every touchpoint.',
+      'Working with RudraThings felt like having an in-house team. They understood our vision from day one and executed it flawlessly across every touchpoint.',
     name: 'Emily Rodriguez',
     role: 'Founder, DataPulse',
     initials: 'ER',
@@ -36,7 +36,7 @@ const testimonials = [
   },
   {
     quote:
-      'From branding to web development, NEXUS handled everything. Our rebrand generated more buzz than any campaign we have ever run.',
+      'From branding to web development, RudraThings handled everything. Our rebrand generated more buzz than any campaign we have ever run.',
     name: 'Lisa Thompson',
     role: 'VP Marketing, SyncLabs',
     initials: 'LT',
@@ -98,7 +98,7 @@ const Testimonials = () => {
               {doubledTestimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.name}-${index}`}
-                  className="min-w-[350px] max-w-[350px] backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col"
+                  className="min-w-[350px] max-w-[350px] bg-surface/80 border border-white/10 rounded-3xl p-8 flex flex-col"
                 >
                   {/* Quote */}
                   <p className="text-gray-300 italic leading-relaxed mb-6 flex-1">

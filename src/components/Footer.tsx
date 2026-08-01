@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1 - Logo & Tagline */}
           <div>
-            <h2 className="text-2xl font-bold gradient-text mb-4">NEXUS</h2>
+            <h2 className="text-2xl font-bold gradient-text mb-4">RudraThings</h2>
             <p className="text-gray-400 leading-relaxed">
               Crafting digital experiences that push boundaries. We turn bold
               ideas into remarkable products.
@@ -120,7 +120,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-sm">
-            &copy; 2025 NEXUS. All rights reserved.
+            &copy; 2025 RudraThings. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a

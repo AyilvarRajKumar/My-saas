@@ -144,19 +144,19 @@ const Contact = () => {
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
                   <HiMail className="text-accent-purple" />
                 </div>
-                <span className="text-gray-300">hello@nexus.agency</span>
+                <span className="text-gray-300">hello@rudrathings.agency</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
                   <HiPhone className="text-accent-purple" />
                 </div>
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+91 40 1234 5678</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
                   <HiLocationMarker className="text-accent-purple" />
                 </div>
-                <span className="text-gray-300">San Francisco, CA</span>
+                <span className="text-gray-300">Hitech City, Hyderabad, Telangana, India</span>
               </div>
             </div>
 

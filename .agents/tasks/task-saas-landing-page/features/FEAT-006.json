@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-006",
+  "type": "fix",
+  "description": "Refinements based on user feedback: bold display font for hero, rename NEXUS to RudraThings, fix testimonial card shadows, update address to Hyderabad, update copyright.",
+  "status": "in_progress",
+  "steps": [
+    "Add Playfair Display bold/display font via Google Fonts in index.html and configure in tailwind.config.js",
+    "Apply the display font to hero headline for dramatic bold typography",
+    "Replace all instances of NEXUS with RudraThings throughout the codebase",
+    "Fix testimonial card overlapping dark shadows",
+    "Update contact address from San Francisco to Hyderabad, India with matching phone and email",
+    "Update copyright in footer from NEXUS to RudraThings",
+    "Run npm run build to verify changes compile cleanly"
+  ],
+  "acceptance_criteria": [
+    "Hero headline uses a bold display/serif font that is visually dramatic",
+    "All references to NEXUS are replaced with RudraThings",
+    "Testimonial cards have no duplicate/overlapping dark shadows",
+    "Contact section shows Hyderabad address with Indian phone number and RudraThings email",
+    "Footer copyright reads 2025 RudraThings",
+    "npm run build succeeds"
+  ],
+  "verification": [
+    "source $HOME/.nvm/nvm.sh && cd /projects/sandbox/My-saas && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": null
+}
