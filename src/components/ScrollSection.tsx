@@ -56,7 +56,6 @@ export default function ScrollSection({
           boxShadow,
           transformOrigin: 'center top',
           borderRadius: index > 0 ? '24px 24px 0 0' : undefined,
-          overflow: 'hidden',
           willChange: 'transform, opacity',
         }}
       >

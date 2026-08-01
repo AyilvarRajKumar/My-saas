@@ -197,8 +197,8 @@ const Contact = () => {
             whileInView={shouldReduceMotion ? undefined : 'visible'}
             viewport={{ once: true, amount: 0.2 }}
             variants={shouldReduceMotion ? undefined : rotateInFromRight}
-            className={!shouldReduceMotion ? 'animate-float-slow' : ''}
           >
+            <div className={!shouldReduceMotion ? 'animate-float-slow' : ''}>
             <form
               onSubmit={handleSubmit}
               className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8"
@@ -300,6 +300,7 @@ const Contact = () => {
                 </button>
               </div>
             </form>
+            </div>
           </motion.div>
         </div>
       </div>

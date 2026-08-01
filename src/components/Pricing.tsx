@@ -88,12 +88,12 @@ const Pricing = () => {
             <motion.div
               key={tier.name}
               variants={shouldReduceMotion ? undefined : flipInX}
-              className={tier.popular && !shouldReduceMotion ? 'animate-float-slow' : ''}
             >
-              <TiltCard
-                maxTilt={tier.popular ? 8 : 12}
-                className={`${tier.popular ? 'radial-glow' : ''}`}
-              >
+              <div className={tier.popular && !shouldReduceMotion ? 'animate-float-slow' : ''}>
+                <TiltCard
+                  maxTilt={tier.popular ? 8 : 12}
+                  className={`${tier.popular ? 'radial-glow' : ''}`}
+                >
                 <div
                   className={`relative backdrop-blur-md bg-white/5 border rounded-3xl p-8 transition-all duration-300 ${
                     tier.popular
@@ -148,6 +148,7 @@ const Pricing = () => {
                   </button>
                 </div>
               </TiltCard>
+              </div>
             </motion.div>
           ))}
         </motion.div>

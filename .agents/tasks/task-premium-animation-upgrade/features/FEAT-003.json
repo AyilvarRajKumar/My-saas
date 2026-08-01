@@ -1,0 +1,27 @@
+{
+  "id": "FEAT-003",
+  "type": "fix",
+  "description": "Fix 5 issues identified in semantic review: Lenis rAF leak, Three.js uncapped render loop, scroll-section clipping, footer positioning, and CSS/Framer Motion transform conflict.",
+  "status": "in_progress",
+  "steps": [
+    "Fix SmoothScroll.tsx: Store rAF ID and cancelAnimationFrame before lenis.destroy() on unmount",
+    "Fix FloatingGeometry.tsx: Switch Canvas to frameloop='demand' and use invalidate() pattern for visibility-gated rendering",
+    "Fix ScrollSection.tsx: Remove overflow:hidden from the inner motion div to prevent content clipping",
+    "Fix App.tsx: Wrap Footer in ScrollSection with highest z-index to prevent occlusion under sticky stack",
+    "Fix Pricing.tsx: Move animate-float-slow to a separate nested wrapper that Framer Motion does not animate",
+    "Fix Contact.tsx: Move animate-float-slow to a separate nested wrapper that Framer Motion does not animate"
+  ],
+  "acceptance_criteria": [
+    "SmoothScroll properly cancels rAF before destroying Lenis",
+    "FloatingGeometry Canvas uses demand frameloop to save GPU when offscreen",
+    "ScrollSection does not clip overflowing content like radial-glow pseudo-elements",
+    "Footer is properly positioned in the stacking layout",
+    "animate-float-slow CSS class does not conflict with Framer Motion transforms",
+    "Build passes: bun run build succeeds with zero errors"
+  ],
+  "verification": [
+    "Run 'bun run build' and confirm zero errors in output"
+  ],
+  "blocked_reason": null,
+  "findings": null
+}

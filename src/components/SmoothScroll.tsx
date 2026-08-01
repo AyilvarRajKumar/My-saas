@@ -17,14 +17,17 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
     lenisRef.current = lenis;
 
+    let rafId: number;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       lenisRef.current = null;
     };
