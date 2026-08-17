@@ -6,7 +6,7 @@ import TiltCard from './TiltCard';
 const tiers = [
   {
     name: 'Starter',
-    price: '$2,999',
+    price: '₹15,000',
     period: '/project',
     popular: false,
     features: [
@@ -19,7 +19,7 @@ const tiers = [
   },
   {
     name: 'Professional',
-    price: '$5,999',
+    price: '₹45,000',
     period: '/project',
     popular: true,
     features: [
@@ -33,7 +33,7 @@ const tiers = [
   },
   {
     name: 'Enterprise',
-    price: '$9,999+',
+    price: '₹75,000+',
     period: '/project',
     popular: false,
     features: [
