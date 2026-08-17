@@ -7,6 +7,7 @@ import {
   HiCheck,
 } from 'react-icons/hi';
 import { FiTwitter, FiLinkedin, FiInstagram, FiDribbble } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { rotateInFromLeft, rotateInFromRight, elasticScale, stagger3DContainer } from '../utils/animations';
 
 const services = [
@@ -101,8 +102,8 @@ const Contact = () => {
   ];
 
   const contactInfoItems = [
-    { icon: HiMail, text: 'hello@rudrathings.agency' },
-    { icon: HiPhone, text: '+91 40 1234 5678' },
+    { icon: HiMail, text: 'rajkumarayilvar@gmail.com' },
+    { icon: HiPhone, text: '+91 6281589014' },
     { icon: HiLocationMarker, text: 'Hitech City, Hyderabad, Telangana, India' },
   ];
 
@@ -142,8 +143,8 @@ const Contact = () => {
               Get in Touch
             </h3>
             <p className="text-gray-400 mb-8 leading-relaxed">
-              Ready to bring your vision to life? We would love to hear about
-              your project. Reach out and let us start building something
+              Ready to bring your vision to life? Reach out to Raj Kumar,
+              Founder and CEO, and let us start building something
               extraordinary together.
             </p>
 
@@ -188,6 +189,25 @@ const Contact = () => {
                   <social.icon className="text-lg" />
                 </motion.button>
               ))}
+            </motion.div>
+
+            {/* WhatsApp Button */}
+            <motion.div
+              className="mt-6"
+              initial={shouldReduceMotion ? undefined : 'hidden'}
+              whileInView={shouldReduceMotion ? undefined : 'visible'}
+              viewport={{ once: true }}
+              variants={shouldReduceMotion ? undefined : elasticScale}
+            >
+              <a
+                href="https://wa.me/916281589014"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe5b] hover:scale-105 transition-all duration-300 shadow-lg shadow-[#25D366]/20"
+              >
+                <FaWhatsapp className="text-xl" />
+                Chat on WhatsApp
+              </a>
             </motion.div>
           </motion.div>
 
