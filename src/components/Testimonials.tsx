@@ -4,7 +4,7 @@ import { floatUpAndFade, stagger3DContainer } from '../utils/animations';
 const testimonials = [
   {
     quote:
-      'RudraThings transformed our outdated platform into a modern, high-converting SaaS product. Our user engagement increased by 340% within the first quarter.',
+      'Digital Presence Agency transformed our outdated platform into a modern, high-converting SaaS product. Our user engagement increased by 340% within the first quarter.',
     name: 'Sarah Chen',
     role: 'CEO, CloudMetrics',
     initials: 'SC',
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     quote:
-      'Working with RudraThings felt like having an in-house team. They understood our vision from day one and executed it flawlessly across every touchpoint.',
+      'Working with Digital Presence Agency felt like having an in-house team. They understood our vision from day one and executed it flawlessly across every touchpoint.',
     name: 'Emily Rodriguez',
     role: 'Founder, DataPulse',
     initials: 'ER',
@@ -36,7 +36,7 @@ const testimonials = [
   },
   {
     quote:
-      'From branding to web development, RudraThings handled everything. Our rebrand generated more buzz than any campaign we have ever run.',
+      'From branding to web development, Digital Presence Agency handled everything. Our rebrand generated more buzz than any campaign we have ever run.',
     name: 'Lisa Thompson',
     role: 'VP Marketing, SyncLabs',
     initials: 'LT',

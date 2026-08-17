@@ -104,7 +104,7 @@ const Contact = () => {
   const contactInfoItems = [
     { icon: HiMail, text: 'rajkumarayilvar@gmail.com' },
     { icon: HiPhone, text: '+91 6281589014' },
-    { icon: HiLocationMarker, text: 'Hitech City, Hyderabad, Telangana, India' },
+    { icon: HiLocationMarker, text: 'Isnapur X Road, Patancheruvu 502307, Telangana' },
   ];
 
   return (
