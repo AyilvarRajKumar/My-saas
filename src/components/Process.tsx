@@ -1,157 +1,150 @@
 import SplitHeading from './SplitHeading';
-import { motion, useReducedMotion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, animate, useInView, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { HiSearch, HiPencil, HiCog, HiCheckCircle } from 'react-icons/hi';
-import { perspectiveEmerge, stagger3DContainer } from '../utils/animations';
 
 const steps = [
   {
     number: '01',
     icon: HiSearch,
     title: 'Discover',
-    description: 'We dive deep into your goals, audience, and market to define the perfect strategy.',
+    description: 'We map your goals, audience and market, then lock the requirements into a written agreement.',
+    count: 3,
+    suffix: '',
+    unit: 'days',
+    note: 'Requirements & timeline signed off',
+    tint: 'from-violet-500/30 via-violet-500/10 to-transparent',
+    accent: 'text-violet-300',
+    bar: 'from-violet-400 to-fuchsia-400',
+    ring: 'hover:border-violet-400/70 hover:shadow-violet-500/30',
+    chip: 'bg-violet-400/15 text-violet-200',
+    fill: 25,
   },
   {
     number: '02',
     icon: HiPencil,
     title: 'Design',
-    description: 'Crafting wireframes and visual designs that align with your brand identity.',
+    description: 'Wireframes and polished visuals that match your brand, reviewed with you before any code.',
+    count: 7,
+    suffix: '',
+    unit: 'days',
+    note: 'Wireframes to final visuals',
+    tint: 'from-cyan-500/30 via-cyan-500/10 to-transparent',
+    accent: 'text-cyan-300',
+    bar: 'from-cyan-400 to-sky-400',
+    ring: 'hover:border-cyan-400/70 hover:shadow-cyan-500/30',
+    chip: 'bg-cyan-400/15 text-cyan-200',
+    fill: 50,
   },
   {
     number: '03',
     icon: HiCog,
     title: 'Develop',
-    description: 'Building your product with clean, scalable code and modern technologies.',
+    description: 'Clean, scalable code and smooth motion, built to the agreed scope with regular progress updates.',
+    count: 21,
+    suffix: '',
+    unit: 'days',
+    note: 'Build, test, iterate',
+    tint: 'from-pink-500/30 via-pink-500/10 to-transparent',
+    accent: 'text-pink-300',
+    bar: 'from-pink-400 to-rose-400',
+    ring: 'hover:border-pink-400/70 hover:shadow-pink-500/30',
+    chip: 'bg-pink-400/15 text-pink-200',
+    fill: 75,
   },
   {
     number: '04',
     icon: HiCheckCircle,
     title: 'Deliver',
-    description: 'Rigorous testing, deployment, and ongoing support to ensure success.',
+    description: 'We check the finished work against every requirement. You pay only once it is complete.',
+    count: 100,
+    suffix: '%',
+    unit: 'checked',
+    note: 'Payment after completion',
+    tint: 'from-emerald-500/30 via-emerald-500/10 to-transparent',
+    accent: 'text-emerald-300',
+    bar: 'from-emerald-400 to-teal-400',
+    ring: 'hover:border-emerald-400/70 hover:shadow-emerald-500/30',
+    chip: 'bg-emerald-400/15 text-emerald-200',
+    fill: 100,
   },
 ];
 
+function CountUp({ to, suffix, start }: { to: number; suffix: string; start: boolean }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (!start || !ref.current) return;
+    const el = ref.current;
+    if (reduce) { el.textContent = `${to}${suffix}`; return; }
+    const controls = animate(0, to, {
+      duration: 1.6,
+      ease: 'easeOut',
+      onUpdate: (v) => { el.textContent = `${Math.round(v)}${suffix}`; },
+    });
+    return () => controls.stop();
+  }, [start, to, suffix, reduce]);
+
+  return <span ref={ref}>0{suffix}</span>;
+}
+
 const Process = () => {
-  const shouldReduceMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const reduce = useReducedMotion();
+  const gridRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(gridRef, { once: true, amount: 0.25 });
 
   return (
     <section id="process" className="py-24 px-6 relative">
-      {/* Floating decorative dots */}
-      {!shouldReduceMotion && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute top-20 left-[10%] w-2 h-2 rounded-full bg-accent-purple/30 animate-float" />
-          <div className="absolute top-40 right-[15%] w-1.5 h-1.5 rounded-full bg-accent-cyan/30 animate-float-delayed" />
-          <div className="absolute bottom-32 left-[20%] w-1 h-1 rounded-full bg-accent-purple/20 animate-float-slow" />
-          <div className="absolute bottom-20 right-[25%] w-2 h-2 rounded-full bg-accent-cyan/20 animate-float" />
-        </div>
-      )}
-
       <div className="max-w-7xl mx-auto">
-        {/* Section Heading */}
-        <motion.div
-          className="text-center mb-16"
-          initial={shouldReduceMotion ? undefined : 'hidden'}
-          whileInView={shouldReduceMotion ? undefined : 'visible'}
-          viewport={{ once: true, amount: 0.3 }}
-          variants={shouldReduceMotion ? undefined : stagger3DContainer}
-        >
-          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-cyan mb-4">Our process</p>
+          <SplitHeading className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
             How It <span className="gradient-text">Works</span>
           </SplitHeading>
-          <motion.p
-            variants={shouldReduceMotion ? undefined : perspectiveEmerge}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
-          >
-            A proven methodology that delivers results every time
-          </motion.p>
-        </motion.div>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Four clear steps, one after the other, with a written agreement before we start.
+          </p>
+        </div>
 
-        {/* Timeline Container */}
-        <div ref={sectionRef} className="relative">
-          {/* Animated Connecting Line - Desktop (with glow) */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 -translate-y-1/2 px-16">
-            <svg
-              className={`w-full h-2 ${!shouldReduceMotion ? 'animate-line-glow' : ''}`}
-              viewBox="0 0 1000 4"
-              fill="none"
-              preserveAspectRatio="none"
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              initial={reduce ? undefined : { opacity: 0, y: 60, scale: 0.95 }}
+              animate={inView || reduce ? { opacity: 1, y: 0, scale: 1 } : undefined}
+              transition={{ duration: 0.7, delay: i * 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className={`card-hover group relative overflow-hidden rounded-3xl border border-white/10 bg-surface p-6 flex flex-col hover:shadow-2xl ${step.ring}`}
             >
-              <motion.path
-                d="M0 2 H1000"
-                stroke="url(#lineGradient)"
-                strokeWidth="2"
-                initial={{ pathLength: 0 }}
-                animate={isInView && !shouldReduceMotion ? { pathLength: 1 } : { pathLength: shouldReduceMotion ? 1 : 0 }}
-                transition={{ duration: 1.5, ease: 'easeInOut' }}
-              />
-              <defs>
-                <linearGradient id="lineGradient" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#a855f7" />
-                  <stop offset="0.5" stopColor="#06b6d4" />
-                  <stop offset="1" stopColor="#a855f7" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${step.tint} pointer-events-none`} aria-hidden="true" />
 
-          {/* Animated Connecting Line - Mobile (with glow) */}
-          <div className="lg:hidden absolute top-0 bottom-0 left-8 w-1">
-            <svg
-              className={`w-full h-full ${!shouldReduceMotion ? 'animate-line-glow' : ''}`}
-              viewBox="0 0 4 800"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <motion.path
-                d="M2 0 V800"
-                stroke="url(#lineGradientVertical)"
-                strokeWidth="2"
-                initial={{ pathLength: 0 }}
-                animate={isInView && !shouldReduceMotion ? { pathLength: 1 } : { pathLength: shouldReduceMotion ? 1 : 0 }}
-                transition={{ duration: 1.5, ease: 'easeInOut' }}
-              />
-              <defs>
-                <linearGradient id="lineGradientVertical" x1="0" y1="0" x2="0" y2="800" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#a855f7" />
-                  <stop offset="0.5" stopColor="#06b6d4" />
-                  <stop offset="1" stopColor="#a855f7" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+              <div className="relative flex items-center justify-between mb-8">
+                <span className={`font-mono text-xs px-3 py-1 rounded-full ${step.chip}`}>STEP {step.number}</span>
+                <step.icon className={`text-2xl ${step.accent} transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6`} />
+              </div>
 
-          {/* Steps with 3D perspective emergence */}
-          <motion.div
-            className="relative grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6"
-            initial={shouldReduceMotion ? undefined : 'hidden'}
-            whileInView={shouldReduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.2 }}
-            variants={shouldReduceMotion ? undefined : stagger3DContainer}
-            style={{ perspective: '1000px' }}
-          >
-            {steps.map((step) => (
-              <motion.div
-                key={step.number}
-                variants={shouldReduceMotion ? undefined : perspectiveEmerge}
-                className="relative pl-16 lg:pl-0"
-              >
-                <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-6 text-center lg:text-center hover:border-accent-purple/30 transition-colors duration-300">
-                  <span className="text-sm font-bold gradient-text mb-2 block">
-                    {step.number}
-                  </span>
-                  <step.icon className="text-3xl text-accent-cyan mx-auto lg:mx-auto mb-3" />
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              <div className="relative mb-2 flex items-baseline gap-2">
+                <span className={`font-num text-6xl font-bold leading-none ${step.accent}`}>
+                  <CountUp to={step.count} suffix={step.suffix} start={inView} />
+                </span>
+                <span className="font-mono text-xs uppercase tracking-wider text-gray-400">{step.unit}</span>
+              </div>
+              <p className="relative font-mono text-[11px] uppercase tracking-wide text-gray-500 mb-6">{step.note}</p>
+
+              <h3 className="relative font-heading text-2xl font-extrabold text-white mb-2">{step.title}</h3>
+              <p className="relative text-gray-400 text-sm leading-relaxed flex-1">{step.description}</p>
+
+              <div className="relative mt-6 h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <motion.div
+                  className={`h-full rounded-full bg-gradient-to-r ${step.bar}`}
+                  initial={reduce ? undefined : { width: 0 }}
+                  animate={inView || reduce ? { width: `${step.fill}%` } : undefined}
+                  transition={{ duration: 1.2, delay: i * 0.25 + 0.4, ease: 'easeOut' }}
+                  style={reduce ? { width: `${step.fill}%` } : undefined}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

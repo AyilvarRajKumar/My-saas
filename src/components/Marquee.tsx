@@ -7,7 +7,7 @@ const items = [
 export default function Marquee() {
   return (
     <div
-      className="relative overflow-hidden py-8 border-y border-white/10 bg-background select-none pointer-events-none"
+      className="relative overflow-hidden py-8 bg-background select-none pointer-events-none"
       style={{
         maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
         WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
@@ -18,7 +18,7 @@ export default function Marquee() {
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="mx-8 flex items-center gap-8 text-2xl md:text-4xl font-display font-bold text-white/40 whitespace-nowrap"
+            className="mx-8 flex items-center gap-8 text-2xl md:text-4xl font-serif italic text-white/40 whitespace-nowrap"
           >
             {item}
             <span className="text-accent-purple">✦</span>

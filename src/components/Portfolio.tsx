@@ -127,7 +127,7 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
+          <SplitHeading className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
             Our <span className="gradient-text">Work</span>
           </SplitHeading>
           <motion.p

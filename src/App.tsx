@@ -9,18 +9,31 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollSection from './components/ScrollSection';
-import ScrollProgress from './components/ScrollProgress';
 import Marquee from './components/Marquee';
 import ScrollStory from './components/ScrollStory';
 import CursorFollower from './components/CursorFollower';
 import { useScrollReveals } from './lib/useScrollReveals';
+import LegalPage from './pages/LegalPage';
+import { findLegalDoc } from './pages/legal';
 
 function App() {
   useScrollReveals();
+  const legalDoc = findLegalDoc(window.location.pathname);
+  if (legalDoc) {
+    return (
+      <SmoothScroll>
+        <div className="min-h-screen bg-background text-white font-sans">
+          <CursorFollower />
+          <Header />
+          <LegalPage doc={legalDoc} />
+          <Footer />
+        </div>
+      </SmoothScroll>
+    );
+  }
   return (
     <SmoothScroll>
       <div className="min-h-screen bg-background text-white font-sans">
-        <ScrollProgress />
         <CursorFollower />
         <Header />
         {/* Hero stays as the first unpinned full-screen section */}
