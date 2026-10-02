@@ -11,6 +11,8 @@ import SmoothScroll from './components/SmoothScroll';
 import ScrollSection from './components/ScrollSection';
 import ScrollProgress from './components/ScrollProgress';
 import Marquee from './components/Marquee';
+import ScrollStory from './components/ScrollStory';
+import CursorFollower from './components/CursorFollower';
 import { useScrollReveals } from './lib/useScrollReveals';
 
 function App() {
@@ -19,10 +21,12 @@ function App() {
     <SmoothScroll>
       <div className="min-h-screen bg-background text-white font-sans">
         <ScrollProgress />
+        <CursorFollower />
         <Header />
         {/* Hero stays as the first unpinned full-screen section */}
         <Hero />
         <div className="relative z-[5]"><Marquee /></div>
+        <ScrollStory />
 
         {/* Stacking sections - each rises up and stacks on top of the previous */}
         <ScrollSection index={0} zIndex={10} topOffset={0}>

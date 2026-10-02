@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { useRef, lazy, Suspense } from 'react';
 import SplitHeading from './SplitHeading';
 import MagneticButton from './MagneticButton';
+import MouseField from './MouseField';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const FloatingGeometry = lazy(() => import('./FloatingGeometry'));
@@ -54,6 +55,8 @@ const Hero = () => {
           </Suspense>
         </motion.div>
       )}
+
+      <MouseField />
 
       {/* Floating Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true">
