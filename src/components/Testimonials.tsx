@@ -93,7 +93,7 @@ const Testimonials = () => {
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div
-              className={`flex gap-6 w-max ${shouldReduceMotion ? '' : 'animate-scroll motion-reduce:animate-none group-hover:[animation-play-state:paused]'}`}
+              className={`flex gap-6 w-max ${shouldReduceMotion ? '' : 'animate-scroll motion-reduce:animate-none'}`}
             >
               {doubledTestimonials.map((testimonial, index) => (
                 <div
