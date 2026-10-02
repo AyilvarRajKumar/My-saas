@@ -8,7 +8,6 @@ import {
   HiLocationMarker,
   HiCheck,
 } from 'react-icons/hi';
-import { FiTwitter, FiLinkedin, FiInstagram, FiDribbble } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { rotateInFromLeft, rotateInFromRight, elasticScale, stagger3DContainer } from '../utils/animations';
 
@@ -96,13 +95,6 @@ const Contact = () => {
       errors[field] ? 'border-red-500/50 ring-1 ring-red-500/50' : 'border-white/10'
     } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-accent-purple/50 focus:ring-1 focus:ring-accent-purple/50 focus:outline-none transition-all`;
 
-  const socialLinks = [
-    { icon: FiTwitter, label: 'Twitter' },
-    { icon: FiLinkedin, label: 'LinkedIn' },
-    { icon: FiInstagram, label: 'Instagram' },
-    { icon: FiDribbble, label: 'Dribbble' },
-  ];
-
   const contactInfoItems = [
     { icon: HiMail, text: 'rajkumarayilvar@gmail.com' },
     { icon: HiPhone, text: '+91 6281589014' },
@@ -166,27 +158,6 @@ const Contact = () => {
                   </div>
                   <span className="text-gray-300">{item.text}</span>
                 </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Social Icons with staggered bounce */}
-            <motion.div
-              className="flex gap-3"
-              initial={shouldReduceMotion ? undefined : 'hidden'}
-              whileInView={shouldReduceMotion ? undefined : 'visible'}
-              viewport={{ once: true }}
-              variants={shouldReduceMotion ? undefined : stagger3DContainer}
-            >
-              {socialLinks.map((social) => (
-                <motion.button
-                  key={social.label}
-                  type="button"
-                  aria-label={social.label}
-                  variants={shouldReduceMotion ? undefined : elasticScale}
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-purple/50 hover:shadow-lg hover:shadow-accent-purple/20 transition-all duration-300"
-                >
-                  <social.icon className="text-lg" />
-                </motion.button>
               ))}
             </motion.div>
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FiTwitter, FiLinkedin, FiInstagram, FiDribbble } from 'react-icons/fi';
 
 const quickLinks = ['Home', 'Services', 'Work', 'About', 'Contact'];
 
@@ -10,13 +9,6 @@ const serviceLinks = [
   'Motion Graphics',
   'AI Content Creation',
   'Content Provider Outreach',
-];
-
-const socialLinks = [
-  { icon: FiTwitter, label: 'Twitter' },
-  { icon: FiLinkedin, label: 'LinkedIn' },
-  { icon: FiInstagram, label: 'Instagram' },
-  { icon: FiDribbble, label: 'Dribbble' },
 ];
 
 const Footer = () => {
@@ -39,7 +31,7 @@ const Footer = () => {
         <div className="relative rounded-t-3xl rounded-b-[48px] md:rounded-b-[120px] border border-white/10 bg-surface px-6 sm:px-10 lg:px-16 pt-14 pb-16 md:pb-24 shadow-[0_30px_120px_-30px_rgba(168,85,247,0.35)]">
           <div className="absolute inset-0 rounded-[inherit] gradient-mesh pointer-events-none" aria-hidden="true" />
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-12">
+          <div className="relative grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr] gap-12">
             {/* Brand + newsletter */}
             <div>
               <a href="#hero" className="block text-2xl sm:text-3xl font-bold gradient-text tracking-tight">
@@ -89,23 +81,6 @@ const Footer = () => {
                   <li key={service}>
                     <a href="#services" className="text-gray-400 hover:text-white transition-colors duration-200">
                       {service}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Follow */}
-            <div>
-              <h3 className="text-white font-bold text-lg mb-5">Follow us at</h3>
-              <ul className="space-y-4">
-                {socialLinks.map((social) => (
-                  <li key={social.label}>
-                    <a href="#contact" className="group flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-200">
-                      <span className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent-purple/60 group-hover:shadow-lg group-hover:shadow-accent-purple/20 transition-all">
-                        <social.icon className="text-sm" />
-                      </span>
-                      {social.label}
                     </a>
                   </li>
                 ))}
