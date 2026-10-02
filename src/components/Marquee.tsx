@@ -3,11 +3,11 @@ const items = [
   'AI Content', 'Creator Outreach', 'Branding', 'SaaS Growth',
 ];
 
-/** Infinite, edge-faded text marquee (21st.dev style). Keeps running on hover. */
+/** Infinite, edge-faded text marquee (21st.dev style). Never pauses; not selectable or clickable. */
 export default function Marquee() {
   return (
     <div
-      className="relative overflow-hidden py-8 border-y border-white/10 bg-background"
+      className="relative overflow-hidden py-8 border-y border-white/10 bg-background select-none pointer-events-none"
       style={{
         maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
         WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',

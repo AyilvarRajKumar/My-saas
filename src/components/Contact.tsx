@@ -1,4 +1,5 @@
 import SplitHeading from './SplitHeading';
+import ServiceSelect from './ServiceSelect';
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
@@ -238,30 +239,11 @@ const Contact = () => {
 
                 {/* Service Dropdown */}
                 <div>
-                  <div className="relative">
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      style={{ colorScheme: 'dark' }}
-                      className={`w-full bg-white/5 border border-white/10 rounded-xl pl-4 pr-11 py-3 focus:border-accent-purple/50 focus:ring-1 focus:ring-accent-purple/50 focus:outline-none transition-all appearance-none cursor-pointer ${
-                        formData.service ? 'text-white' : 'text-gray-500'
-                      }`}
-                    >
-                      <option value="" className="bg-surface text-gray-400">
-                        Service Interested In
-                      </option>
-                      {services.map((service) => (
-                        <option key={service} value={service} className="bg-surface text-white">
-                          {service}
-                        </option>
-                      ))}
-                    </select>
-                    <HiChevronDown
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xl"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  <ServiceSelect
+                    value={formData.service}
+                    options={services}
+                    onChange={(service) => setFormData((prev) => ({ ...prev, service }))}
+                  />
                 </div>
 
                 {/* Message */}
