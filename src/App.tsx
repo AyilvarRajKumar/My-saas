@@ -9,14 +9,20 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollSection from './components/ScrollSection';
+import ScrollProgress from './components/ScrollProgress';
+import Marquee from './components/Marquee';
+import { useScrollReveals } from './lib/useScrollReveals';
 
 function App() {
+  useScrollReveals();
   return (
     <SmoothScroll>
       <div className="min-h-screen bg-background text-white font-sans">
+        <ScrollProgress />
         <Header />
         {/* Hero stays as the first unpinned full-screen section */}
         <Hero />
+        <div className="relative z-[5]"><Marquee /></div>
 
         {/* Stacking sections - each rises up and stacks on top of the previous */}
         <ScrollSection index={0} zIndex={10} topOffset={0}>

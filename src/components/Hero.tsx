@@ -1,5 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useRef, lazy, Suspense } from 'react';
+import SplitHeading from './SplitHeading';
+import MagneticButton from './MagneticButton';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const FloatingGeometry = lazy(() => import('./FloatingGeometry'));
@@ -79,15 +81,12 @@ const Hero = () => {
         {...animationProps}
       >
         {/* Headline */}
-        <motion.h1
-          variants={shouldReduceMotion ? undefined : fadeInUp}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-tight mb-6 tracking-tight"
-        >
+        <SplitHeading as="h1" className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-tight mb-6 tracking-tight">
           We Build{' '}
           <span className="gradient-text">Digital Products</span>
           <br className="hidden sm:block" />
           {' '}That Move Businesses Forward
-        </motion.h1>
+        </SplitHeading>
 
         {/* Subheadline */}
         <motion.p
@@ -103,18 +102,18 @@ const Hero = () => {
           variants={shouldReduceMotion ? undefined : fadeInUp}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
-          <a
+          <MagneticButton
             href="#contact"
             className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-accent-purple to-accent-cyan text-white font-semibold text-lg hover:scale-105 transition-transform duration-200 shadow-lg shadow-accent-purple/30 hover:shadow-accent-purple/50"
           >
             Get Started
-          </a>
-          <a
+          </MagneticButton>
+          <MagneticButton
             href="#portfolio"
             className="inline-flex items-center px-8 py-4 rounded-full border border-white/20 text-white font-semibold text-lg hover:scale-105 hover:bg-white/5 transition-all duration-200"
           >
             Our Work
-          </a>
+          </MagneticButton>
         </motion.div>
 
         {/* Trust Bar */}

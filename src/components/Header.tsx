@@ -49,7 +49,7 @@ const Header = () => {
     >
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="text-2xl font-bold gradient-text tracking-tight">
+        <a href="#hero" className="text-base sm:text-xl md:text-2xl font-bold gradient-text tracking-tight whitespace-nowrap">
           Digital Presence Agency
         </a>
 

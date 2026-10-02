@@ -1,3 +1,4 @@
+import SplitHeading from './SplitHeading';
 import { motion, useReducedMotion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { HiSearch, HiPencil, HiCog, HiCheckCircle } from 'react-icons/hi';
@@ -56,12 +57,9 @@ const Process = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <motion.h2
-            variants={shouldReduceMotion ? undefined : perspectiveEmerge}
-            className="text-3xl md:text-5xl font-bold mb-4"
-          >
+          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
             How It <span className="gradient-text">Works</span>
-          </motion.h2>
+          </SplitHeading>
           <motion.p
             variants={shouldReduceMotion ? undefined : perspectiveEmerge}
             className="text-gray-400 max-w-2xl mx-auto text-lg"

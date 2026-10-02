@@ -1,35 +1,36 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import Lenis from 'lenis';
+import { gsap, ScrollTrigger, prefersReducedMotion } from '../lib/gsap';
 
 interface SmoothScrollProps {
   children: ReactNode;
 }
 
+/**
+ * Lenis drives the scroll position; GSAP's ticker drives Lenis so
+ * ScrollTrigger animations stay perfectly in sync. A low lerp + damped
+ * wheel multiplier means even a fast flick glides slowly to rest.
+ */
 export default function SmoothScroll({ children }: SmoothScrollProps) {
-  const lenisRef = useRef<Lenis | null>(null);
-
   useEffect(() => {
+    if (prefersReducedMotion()) return;
+
     const lenis = new Lenis({
-      lerp: 0.075,
+      lerp: 0.055,
+      wheelMultiplier: 0.65,
+      touchMultiplier: 1.1,
       smoothWheel: true,
-      wheelMultiplier: 0.8,
+      anchors: { offset: -72, duration: 1.8 },
     });
 
-    lenisRef.current = lenis;
-
-    let rafId: number;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-
-    rafId = requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+    const tick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      gsap.ticker.remove(tick);
       lenis.destroy();
-      lenisRef.current = null;
     };
   }, []);
 
