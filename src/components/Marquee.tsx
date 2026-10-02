@@ -3,18 +3,18 @@ const items = [
   'AI Content', 'Creator Outreach', 'Branding', 'SaaS Growth',
 ];
 
-/** Infinite, edge-faded text marquee (21st.dev style). Pauses on hover. */
+/** Infinite, edge-faded text marquee (21st.dev style). Never pauses; not selectable or clickable. */
 export default function Marquee() {
   return (
     <div
-      className="relative overflow-hidden py-8 border-y border-white/10 bg-background group"
+      className="relative overflow-hidden py-8 border-y border-white/10 bg-background select-none pointer-events-none"
       style={{
         maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
         WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
       }}
       aria-hidden="true"
     >
-      <div className="flex w-max animate-scroll group-hover:[animation-play-state:paused]">
+      <div className="flex w-max animate-scroll">
         {[...items, ...items].map((item, i) => (
           <span
             key={i}

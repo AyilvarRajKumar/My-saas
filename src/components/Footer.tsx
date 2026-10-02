@@ -33,109 +33,108 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-surface border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Multi-column layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Column 1 - Logo & Tagline */}
-          <div>
-            <h2 className="text-2xl font-bold gradient-text mb-4">Digital Presence Agency</h2>
-            <p className="text-gray-400 leading-relaxed">
-              Crafting digital experiences that push boundaries. We turn bold
-              ideas into remarkable products.
-            </p>
-          </div>
+    <footer className="bg-background pt-10 overflow-hidden">
+      {/* Rounded card with a large curved bottom edge */}
+      <div className="mx-auto max-w-[1600px] px-3 sm:px-4">
+        <div className="relative rounded-t-3xl rounded-b-[48px] md:rounded-b-[120px] border border-white/10 bg-surface px-6 sm:px-10 lg:px-16 pt-14 pb-16 md:pb-24 shadow-[0_30px_120px_-30px_rgba(168,85,247,0.35)]">
+          <div className="absolute inset-0 rounded-[inherit] gradient-mesh pointer-events-none" aria-hidden="true" />
 
-          {/* Column 2 - Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="relative grid grid-cols-1 lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-12">
+            {/* Brand + newsletter */}
+            <div>
+              <a href="#hero" className="block text-2xl sm:text-3xl font-bold gradient-text tracking-tight">
+                Digital Presence Agency
+              </a>
+              <p className="text-gray-400 mt-3 max-w-sm">
+                Crafting digital experiences that push boundaries. We turn bold ideas into remarkable products.
+              </p>
 
-          {/* Column 3 - Services */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              {serviceLinks.map((service) => (
-                <li key={service}>
-                  <a
-                    href="#services"
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
-                  >
-                    {service}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4 - Stay Updated */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Stay Updated</h3>
-            <form onSubmit={handleSubscribe} className="flex mb-6">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                className="flex-1 bg-white/5 border border-white/10 rounded-l-xl px-4 py-2 text-white placeholder-gray-500 text-sm focus:border-accent-purple/50 focus:outline-none transition-all"
-              />
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-accent-purple to-accent-cyan text-white text-sm font-semibold px-4 py-2 rounded-r-xl hover:opacity-90 transition-opacity"
-              >
-                {subscribed ? 'Done!' : 'Subscribe'}
-              </button>
-            </form>
-
-            {/* Social Icons */}
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
+              <h3 className="text-white font-semibold text-lg mt-10 mb-4">Subscribe to our newsletter</h3>
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-accent-purple/50 focus:outline-none transition-all"
+                />
                 <button
-                  key={social.label}
-                  type="button"
-                  aria-label={social.label}
-                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-purple/50 hover:shadow-lg hover:shadow-accent-purple/20 transition-all duration-300"
+                  type="submit"
+                  className="bg-gradient-to-r from-accent-purple to-accent-cyan text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity"
                 >
-                  <social.icon className="text-base" />
+                  {subscribed ? 'Done!' : 'Subscribe'}
                 </button>
-              ))}
+              </form>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-white font-bold text-lg mb-5">Quick Links</h3>
+              <ul className="space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link}>
+                    <a href={`#${link.toLowerCase()}`} className="text-gray-400 hover:text-white transition-colors duration-200">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="text-white font-bold text-lg mb-5">Services</h3>
+              <ul className="space-y-3">
+                {serviceLinks.map((service) => (
+                  <li key={service}>
+                    <a href="#services" className="text-gray-400 hover:text-white transition-colors duration-200">
+                      {service}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Follow */}
+            <div>
+              <h3 className="text-white font-bold text-lg mb-5">Follow us at</h3>
+              <ul className="space-y-4">
+                {socialLinks.map((social) => (
+                  <li key={social.label}>
+                    <a href="#contact" className="group flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-200">
+                      <span className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent-purple/60 group-hover:shadow-lg group-hover:shadow-accent-purple/20 transition-all">
+                        <social.icon className="text-sm" />
+                      </span>
+                      {social.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-400 text-sm">
-            &copy; 2026 Digital Presence Agency. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
-            >
-              Terms of Service
-            </a>
-          </div>
+      {/* Copyright */}
+      <div className="max-w-7xl mx-auto px-6 pt-6 pb-4 text-center">
+        <p className="text-gray-400 text-sm">&copy; 2026 Digital Presence Agency. All rights reserved.</p>
+        <div className="flex justify-center gap-6 mt-2">
+          <a href="#" className="text-gray-500 hover:text-white text-sm underline underline-offset-4 transition-colors">Privacy Policy</a>
+          <a href="#" className="text-gray-500 hover:text-white text-sm underline underline-offset-4 transition-colors">Terms of Service</a>
+        </div>
+      </div>
+
+      {/* Giant looping wordmark: never pauses, not selectable or clickable */}
+      <div className="py-6 select-none pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="flex w-max animate-scroll">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span key={i} className="mx-4 sm:mx-6 flex items-center gap-4 sm:gap-6 text-4xl sm:text-6xl font-extrabold text-white/15 whitespace-nowrap">
+              DIGITAL PRESENCE
+              <span className="w-12 h-12 sm:w-[72px] sm:h-[72px] rounded-full bg-gradient-to-br from-accent-purple to-accent-cyan flex items-center justify-center text-white text-xl sm:text-3xl">
+                ↗
+              </span>
+            </span>
+          ))}
         </div>
       </div>
     </footer>
