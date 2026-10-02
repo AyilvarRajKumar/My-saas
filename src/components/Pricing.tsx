@@ -87,7 +87,7 @@ const Pricing = () => {
               key={tier.name}
               variants={shouldReduceMotion ? undefined : flipInX}
             >
-              <div className={tier.popular && !shouldReduceMotion ? 'animate-float-slow' : ''}>
+              <div className={''}>
                 <TiltCard
                   maxTilt={tier.popular ? 8 : 12}
                   className={`${tier.popular ? 'radial-glow' : ''}`}

@@ -6,8 +6,8 @@ import {
   HiPhone,
   HiLocationMarker,
   HiCheck,
+  HiChevronDown,
 } from 'react-icons/hi';
-import { FiTwitter, FiLinkedin, FiInstagram, FiDribbble } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { rotateInFromLeft, rotateInFromRight, elasticScale, stagger3DContainer } from '../utils/animations';
 
@@ -95,13 +95,6 @@ const Contact = () => {
       errors[field] ? 'border-red-500/50 ring-1 ring-red-500/50' : 'border-white/10'
     } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-accent-purple/50 focus:ring-1 focus:ring-accent-purple/50 focus:outline-none transition-all`;
 
-  const socialLinks = [
-    { icon: FiTwitter, label: 'Twitter' },
-    { icon: FiLinkedin, label: 'LinkedIn' },
-    { icon: FiInstagram, label: 'Instagram' },
-    { icon: FiDribbble, label: 'Dribbble' },
-  ];
-
   const contactInfoItems = [
     { icon: HiMail, text: 'rajkumarayilvar@gmail.com' },
     { icon: HiPhone, text: '+91 6281589014' },
@@ -168,27 +161,6 @@ const Contact = () => {
               ))}
             </motion.div>
 
-            {/* Social Icons with staggered bounce */}
-            <motion.div
-              className="flex gap-3"
-              initial={shouldReduceMotion ? undefined : 'hidden'}
-              whileInView={shouldReduceMotion ? undefined : 'visible'}
-              viewport={{ once: true }}
-              variants={shouldReduceMotion ? undefined : stagger3DContainer}
-            >
-              {socialLinks.map((social) => (
-                <motion.button
-                  key={social.label}
-                  type="button"
-                  aria-label={social.label}
-                  variants={shouldReduceMotion ? undefined : elasticScale}
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-purple/50 hover:shadow-lg hover:shadow-accent-purple/20 transition-all duration-300"
-                >
-                  <social.icon className="text-lg" />
-                </motion.button>
-              ))}
-            </motion.div>
-
             {/* WhatsApp Button */}
             <motion.div
               className="mt-6"
@@ -216,7 +188,7 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.2 }}
             variants={shouldReduceMotion ? undefined : rotateInFromRight}
           >
-            <div className={!shouldReduceMotion ? 'animate-float-slow' : ''}>
+            <div>
             <form
               onSubmit={handleSubmit}
               className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8"
@@ -266,21 +238,30 @@ const Contact = () => {
 
                 {/* Service Dropdown */}
                 <div>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-accent-purple/50 focus:ring-1 focus:ring-accent-purple/50 focus:outline-none transition-all appearance-none"
-                  >
-                    <option value="" className="bg-surface text-gray-400">
-                      Service Interested In
-                    </option>
-                    {services.map((service) => (
-                      <option key={service} value={service} className="bg-surface">
-                        {service}
+                  <div className="relative">
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      style={{ colorScheme: 'dark' }}
+                      className={`w-full bg-white/5 border border-white/10 rounded-xl pl-4 pr-11 py-3 focus:border-accent-purple/50 focus:ring-1 focus:ring-accent-purple/50 focus:outline-none transition-all appearance-none cursor-pointer ${
+                        formData.service ? 'text-white' : 'text-gray-500'
+                      }`}
+                    >
+                      <option value="" className="bg-surface text-gray-400">
+                        Service Interested In
                       </option>
-                    ))}
-                  </select>
+                      {services.map((service) => (
+                        <option key={service} value={service} className="bg-surface text-white">
+                          {service}
+                        </option>
+                      ))}
+                    </select>
+                    <HiChevronDown
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xl"
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
 
                 {/* Message */}
