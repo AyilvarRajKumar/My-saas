@@ -1,3 +1,4 @@
+import SplitHeading from './SplitHeading';
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
@@ -121,12 +122,9 @@ const Contact = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <motion.h2
-            variants={shouldReduceMotion ? undefined : elasticScale}
-            className="text-3xl md:text-5xl font-bold mb-4"
-          >
+          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
             Let&apos;s <span className="gradient-text">Work Together</span>
-          </motion.h2>
+          </SplitHeading>
         </motion.div>
 
         {/* Two-column layout */}

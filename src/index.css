@@ -26,6 +26,15 @@ html.lenis.lenis-smooth [data-lenis-prevent] {
 
 html {
   scroll-behavior: auto;
+  overflow-x: clip;
+}
+
+/* SplitText wraps words in boxes, so the gradient must be painted per word */
+.gradient-text .split-word {
+  background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 body {

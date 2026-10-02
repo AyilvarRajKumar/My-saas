@@ -1,3 +1,4 @@
+import SplitHeading from './SplitHeading';
 import { motion, useReducedMotion } from 'framer-motion';
 import { floatUpAndFade, stagger3DContainer } from '../utils/animations';
 
@@ -69,12 +70,9 @@ const Testimonials = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <motion.h2
-            variants={shouldReduceMotion ? undefined : floatUpAndFade}
-            className="text-3xl md:text-5xl font-bold mb-4"
-          >
+          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
             What Our <span className="gradient-text">Clients Say</span>
-          </motion.h2>
+          </SplitHeading>
           <motion.p
             variants={shouldReduceMotion ? undefined : floatUpAndFade}
             className="text-gray-400 max-w-2xl mx-auto text-lg"

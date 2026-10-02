@@ -1,3 +1,4 @@
+import SplitHeading from './SplitHeading';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
   HiCode,
@@ -67,12 +68,9 @@ const Services = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <motion.h2
-            variants={shouldReduceMotion ? undefined : flipInX}
-            className="text-3xl md:text-5xl font-bold mb-4"
-          >
+          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
             Our <span className="gradient-text">Services</span>
-          </motion.h2>
+          </SplitHeading>
           <motion.p
             variants={shouldReduceMotion ? undefined : flipInX}
             className="text-gray-400 max-w-2xl mx-auto text-lg"
