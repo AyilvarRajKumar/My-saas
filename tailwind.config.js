@@ -21,7 +21,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Syne', 'Inter', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'Inter', 'sans-serif'],
         heading: ['"Bricolage Grotesque"', 'Inter', 'sans-serif'],
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
         num: ['"Space Grotesk"', 'Inter', 'sans-serif'],

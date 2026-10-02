@@ -252,8 +252,8 @@ export default function ScrollStory() {
                 }`}
                 aria-hidden={i !== chapter}
               >
-                <div className="text-6xl md:text-7xl font-num font-bold gradient-text mb-2">{c.n}</div>
-                <h2 className="font-heading text-2xl md:text-4xl font-extrabold text-white mb-3">{c.title}</h2>
+                <div className="text-6xl md:text-7xl font-num font-semibold gradient-text mb-2">{c.n}</div>
+                <h2 className="font-heading text-2xl md:text-4xl font-semibold text-white mb-3">{c.title}</h2>
                 <p className="text-gray-400 max-w-md">{c.body}</p>
               </div>
             ))}

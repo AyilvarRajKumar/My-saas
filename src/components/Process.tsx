@@ -99,7 +99,7 @@ const Process = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-cyan mb-4">Our process</p>
-          <SplitHeading className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+          <SplitHeading className="font-heading text-4xl md:text-6xl font-semibold tracking-tight mb-4">
             How It <span className="gradient-text">Works</span>
           </SplitHeading>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -124,14 +124,14 @@ const Process = () => {
               </div>
 
               <div className="relative mb-2 flex items-baseline gap-2">
-                <span className={`font-num text-6xl font-bold leading-none ${step.accent}`}>
+                <span className={`font-num text-6xl font-semibold leading-none ${step.accent}`}>
                   <CountUp to={step.count} suffix={step.suffix} start={inView} />
                 </span>
                 <span className="font-mono text-xs uppercase tracking-wider text-gray-400">{step.unit}</span>
               </div>
               <p className="relative font-mono text-[11px] uppercase tracking-wide text-gray-500 mb-6">{step.note}</p>
 
-              <h3 className="relative font-heading text-2xl font-extrabold text-white mb-2">{step.title}</h3>
+              <h3 className="relative font-heading text-2xl font-semibold text-white mb-2">{step.title}</h3>
               <p className="relative text-gray-400 text-sm leading-relaxed flex-1">{step.description}</p>
 
               <div className="relative mt-6 h-1.5 rounded-full bg-white/10 overflow-hidden">

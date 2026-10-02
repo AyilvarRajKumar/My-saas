@@ -70,7 +70,7 @@ const Testimonials = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <SplitHeading className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+          <SplitHeading className="font-heading text-4xl md:text-6xl font-semibold tracking-tight mb-4">
             What Our <span className="gradient-text">Clients Say</span>
           </SplitHeading>
           <motion.p

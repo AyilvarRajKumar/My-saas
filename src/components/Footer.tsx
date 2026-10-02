@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="relative grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr] gap-12">
             {/* Brand */}
             <div>
-              <a href={`${prefix}#hero`} className="block font-heading text-2xl sm:text-3xl font-extrabold gradient-text tracking-tight">
+              <a href={`${prefix}#hero`} className="block font-heading text-2xl sm:text-3xl font-semibold gradient-text tracking-tight">
                 Digital Presence Agency
               </a>
               <p className="text-gray-400 mt-3 max-w-sm">
@@ -86,7 +86,7 @@ const Footer = () => {
       <div className="py-6 select-none pointer-events-none overflow-hidden" aria-hidden="true">
         <div className="flex w-max animate-scroll">
           {Array.from({ length: 12 }).map((_, i) => (
-            <span key={i} className="mx-4 sm:mx-6 flex items-center gap-4 sm:gap-6 text-4xl sm:text-6xl font-extrabold text-white/15 whitespace-nowrap">
+            <span key={i} className="mx-4 sm:mx-6 flex items-center gap-4 sm:gap-6 text-4xl sm:text-6xl font-semibold text-white/15 whitespace-nowrap">
               DIGITAL PRESENCE
               <span className="w-12 h-12 sm:w-[72px] sm:h-[72px] rounded-full bg-gradient-to-br from-accent-purple to-accent-cyan flex items-center justify-center text-white text-xl sm:text-3xl">
                 ↗

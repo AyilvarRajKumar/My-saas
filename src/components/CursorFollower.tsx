@@ -30,7 +30,7 @@ export default function CursorFollower() {
   }, []);
 
   return (
-    <div className="hidden [@media(pointer:fine)]:block pointer-events-none fixed inset-0 z-[100]" aria-hidden="true">
+    <div className="hidden [@media(pointer:fine)]:block pointer-events-none fixed inset-0 z-[120]" aria-hidden="true">
       <div ref={ring} className="absolute left-0 top-0 w-9 h-9 rounded-full border border-accent-purple/70 bg-accent-purple/10 opacity-0 mix-blend-screen" />
       <div ref={dot} className="absolute left-0 top-0 w-1.5 h-1.5 rounded-full bg-accent-cyan opacity-0" />
     </div>
