@@ -242,7 +242,7 @@ export default function ScrollStory() {
       <div className="absolute inset-0 gradient-mesh pointer-events-none" aria-hidden="true" />
       <div className="relative max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 gap-8 items-center">
         <div className="order-2 md:order-1">
-          <p className="text-sm tracking-[0.3em] text-accent-cyan uppercase mb-4">Our story, frame by frame</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-cyan uppercase mb-4">Our story, frame by frame</p>
           <div className="relative min-h-[11rem]">
             {chapters.map((c, i) => (
               <div
@@ -252,8 +252,8 @@ export default function ScrollStory() {
                 }`}
                 aria-hidden={i !== chapter}
               >
-                <div className="text-6xl md:text-7xl font-display font-black gradient-text mb-2">{c.n}</div>
-                <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">{c.title}</h2>
+                <div className="text-6xl md:text-7xl font-num font-bold gradient-text mb-2">{c.n}</div>
+                <h2 className="font-heading text-2xl md:text-4xl font-extrabold text-white mb-3">{c.title}</h2>
                 <p className="text-gray-400 max-w-md">{c.body}</p>
               </div>
             ))}

@@ -2,13 +2,18 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 
-const navLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#portfolio' },
-  { label: 'About', href: '#process' },
-  { label: 'Contact', href: '#contact' },
+const navItems = [
+  { label: 'Home', id: 'hero' },
+  { label: 'Services', id: 'services' },
+  { label: 'Work', id: 'portfolio' },
+  { label: 'About', id: 'process' },
+  { label: 'Contact', id: 'contact' },
 ];
+
+// On legal pages, section links must go back to the home page first.
+const prefix = typeof window !== 'undefined' && window.location.pathname !== '/' ? '/' : '';
+const navLinks = navItems.map((n) => ({ label: n.label, href: `${prefix}#${n.id}` }));
+const contactHref = `${prefix}#contact`;
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -40,44 +45,40 @@ const Header = () => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-background/80 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-black/20'
-          : 'bg-white/5 backdrop-blur-md border-b border-white/5'
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#hero" className="text-base sm:text-xl md:text-2xl font-bold gradient-text tracking-tight whitespace-nowrap">
+    <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 pointer-events-none">
+      {/* Floating, iOS-style frosted glass pill */}
+      <nav
+        className={`pointer-events-auto relative mx-auto max-w-5xl rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4
+          border border-white/20 backdrop-blur-2xl backdrop-saturate-[1.8]
+          shadow-[0_8px_32px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(255,255,255,0.05)]
+          transition-all duration-500 ${scrolled ? 'bg-white/[0.09] max-w-4xl' : 'bg-white/[0.06]'}`}
+      >
+        <a href={`${prefix}#hero`} className="font-heading text-sm sm:text-lg font-extrabold gradient-text tracking-tight whitespace-nowrap">
           Digital Presence Agency
         </a>
 
-        {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
+              className="px-3.5 py-1.5 rounded-full text-gray-200 hover:text-white hover:bg-white/10 transition-colors duration-200 text-sm font-medium"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        {/* Desktop CTA */}
         <a
-          href="#contact"
-          className="hidden md:inline-flex items-center px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-purple to-accent-cyan text-white text-sm font-semibold hover:scale-105 transition-transform duration-200 shadow-lg shadow-accent-purple/25"
+          href={contactHref}
+          className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-accent-purple to-accent-cyan text-white text-sm font-semibold hover:scale-105 transition-transform duration-200 shadow-lg shadow-accent-purple/25"
         >
           Book a Call
         </a>
 
-        {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden relative z-50 p-2 text-white"
+          className="md:hidden relative z-50 p-1.5 text-white"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         >
           {mobileOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
@@ -94,7 +95,7 @@ const Header = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              className="pointer-events-auto fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
               onClick={() => setMobileOpen(false)}
             />
 
@@ -109,7 +110,7 @@ const Header = () => {
                 stiffness: 200,
                 duration: shouldReduceMotion ? 0 : undefined,
               }}
-              className="fixed top-0 right-0 h-full w-[75%] max-w-sm bg-surface/95 backdrop-blur-lg border-l border-white/10 z-40 md:hidden flex flex-col pt-24 px-8"
+              className="pointer-events-auto fixed top-0 right-0 h-full w-[75%] max-w-sm bg-surface/95 backdrop-blur-lg border-l border-white/10 z-40 md:hidden flex flex-col pt-24 px-8"
             >
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
@@ -125,7 +126,7 @@ const Header = () => {
               </div>
 
               <a
-                href="#contact"
+                href={contactHref}
                 onClick={handleNavClick}
                 className="mt-8 inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-accent-purple to-accent-cyan text-white font-semibold hover:scale-105 transition-transform duration-200"
               >

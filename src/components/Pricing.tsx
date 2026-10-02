@@ -62,7 +62,7 @@ const Pricing = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <SplitHeading className="text-3xl md:text-5xl font-bold mb-4">
+          <SplitHeading className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
             Simple, <span className="gradient-text">Transparent Pricing</span>
           </SplitHeading>
           <motion.p
@@ -96,7 +96,7 @@ const Pricing = () => {
                   className={`relative backdrop-blur-md bg-white/5 border rounded-3xl p-8 transition-all duration-300 ${
                     tier.popular
                       ? 'border-accent-purple/50 scale-105 shadow-lg shadow-accent-purple/20'
-                      : 'border-white/10 hover:border-white/20'
+                      : 'border-white/10 hover:border-accent-purple/60 hover:shadow-xl hover:shadow-accent-purple/25 transition-all duration-300'
                   }`}
                 >
                   {/* Popular Badge */}
@@ -115,7 +115,7 @@ const Pricing = () => {
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className="text-4xl font-bold text-white">
+                    <span className="font-num text-4xl font-bold text-white">
                       {tier.price}
                     </span>
                     <span className="text-gray-400 text-sm">{tier.period}</span>

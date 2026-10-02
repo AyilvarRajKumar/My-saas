@@ -1,15 +1,14 @@
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { useRef, lazy, Suspense } from 'react';
+import { useRef } from 'react';
 import SplitHeading from './SplitHeading';
 import MagneticButton from './MagneticButton';
 import MouseField from './MouseField';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
-const FloatingGeometry = lazy(() => import('./FloatingGeometry'));
-
 const stats = [
   { value: '50+', label: 'Projects Delivered' },
-  { value: '100+', label: 'Happy Clients' },
+  { value: '62', label: 'Happy Clients' },
+  { value: '15', label: 'Team Members' },
   { value: '5+', label: 'Years Experience' },
 ];
 
@@ -31,9 +30,6 @@ const Hero = () => {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
-  // 3D geometry parallax (moves slower for depth effect)
-  const geometryY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-
   const animationProps = shouldReduceMotion
     ? { initial: undefined, animate: undefined, variants: undefined }
     : {};
@@ -44,18 +40,6 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden"
     >
-      {/* 3D Floating Geometry Background */}
-      {!shouldReduceMotion && (
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ y: geometryY }}
-        >
-          <Suspense fallback={null}>
-            <FloatingGeometry />
-          </Suspense>
-        </motion.div>
-      )}
-
       <MouseField />
 
       {/* Floating Gradient Blobs */}
@@ -84,7 +68,7 @@ const Hero = () => {
         {...animationProps}
       >
         {/* Headline */}
-        <SplitHeading as="h1" className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-tight mb-6 tracking-tight">
+        <SplitHeading as="h1" className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold leading-[1.05] mb-6 tracking-tight">
           We Build{' '}
           <span className="gradient-text">Digital Products</span>
           <br className="hidden sm:block" />
@@ -122,17 +106,17 @@ const Hero = () => {
         {/* Trust Bar */}
         <motion.div
           variants={shouldReduceMotion ? undefined : fadeInUp}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto"
         >
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5 text-center"
+              className="card-hover bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5 text-center cursor-default"
             >
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">
+              <div className="font-num text-3xl md:text-4xl font-bold gradient-text mb-1">
                 {stat.value}
               </div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-gray-400">{stat.label}</div>
             </div>
           ))}
         </motion.div>

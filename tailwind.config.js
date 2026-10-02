@@ -21,7 +21,11 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Boska', 'Georgia', 'serif'],
+        display: ['Syne', 'Inter', 'sans-serif'],
+        heading: ['"Bricolage Grotesque"', 'Inter', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        num: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       keyframes: {
         scroll: {
