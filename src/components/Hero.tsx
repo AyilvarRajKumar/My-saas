@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { useRef } from 'react';
 import SplitHeading from './SplitHeading';
 import MagneticButton from './MagneticButton';
-import MouseField from './MouseField';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const stats = [
@@ -40,8 +39,6 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden"
     >
-      <MouseField />
-
       {/* Floating Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true">
         <motion.div
@@ -68,9 +65,9 @@ const Hero = () => {
         {...animationProps}
       >
         {/* Headline */}
-        <SplitHeading as="h1" className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold leading-[1.05] mb-6 tracking-tight">
+        <SplitHeading as="h1" className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold leading-[1.08] mb-6 tracking-tight">
           We Build{' '}
-          <span className="gradient-text">Digital Products</span>
+          <span className="gradient-text font-serif italic font-normal">Digital Products</span>
           <br className="hidden sm:block" />
           {' '}That Move Businesses Forward
         </SplitHeading>
@@ -113,7 +110,7 @@ const Hero = () => {
               key={stat.label}
               className="card-hover bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5 text-center cursor-default"
             >
-              <div className="font-num text-3xl md:text-4xl font-bold gradient-text mb-1">
+              <div className="font-num text-3xl md:text-4xl font-semibold gradient-text mb-1">
                 {stat.value}
               </div>
               <div className="font-mono text-[11px] uppercase tracking-wider text-gray-400">{stat.label}</div>

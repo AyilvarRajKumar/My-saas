@@ -12,7 +12,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
       <div className="absolute inset-0 gradient-mesh pointer-events-none" aria-hidden="true" />
       <article className="relative max-w-3xl mx-auto">
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-cyan mb-4">Legal</p>
-        <h1 className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+        <h1 className="font-heading text-4xl md:text-6xl font-semibold tracking-tight mb-4">
           <span className="gradient-text">{doc.title}</span>
         </h1>
         <p className="text-gray-400 text-lg mb-12">{doc.intro}</p>

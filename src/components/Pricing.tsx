@@ -48,6 +48,15 @@ const tiers = [
   },
 ];
 
+const WHATSAPP = '916281589014';
+
+const whatsappLink = (tier: { name: string; price: string; period: string }) => {
+  const text =
+    `Hi Digital Presence Agency, I'm interested in the ${tier.name} plan (${tier.price}${tier.period}). ` +
+    `I'd like to discuss my project requirements, delivery timeline and the project agreement. Could we talk?`;
+  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+};
+
 const Pricing = () => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -62,7 +71,7 @@ const Pricing = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={shouldReduceMotion ? undefined : stagger3DContainer}
         >
-          <SplitHeading className="font-heading text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+          <SplitHeading className="font-heading text-4xl md:text-6xl font-semibold tracking-tight mb-4">
             Simple, <span className="gradient-text">Transparent Pricing</span>
           </SplitHeading>
           <motion.p
@@ -90,7 +99,7 @@ const Pricing = () => {
               <div className={''}>
                 <TiltCard
                   maxTilt={tier.popular ? 8 : 12}
-                  className={`${tier.popular ? 'radial-glow' : ''}`}
+                  className={`${tier.popular ? '' : ''}`}
                 >
                 <div
                   className={`relative backdrop-blur-md bg-white/5 border rounded-3xl p-8 transition-all duration-300 ${
@@ -102,7 +111,7 @@ const Pricing = () => {
                   {/* Popular Badge */}
                   {tier.popular && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-accent-purple to-accent-cyan text-white text-sm font-semibold px-4 py-1 rounded-full">
+                      <span className="bg-gradient-to-r from-accent-purple to-accent-cyan text-white text-sm font-medium px-4 py-1 rounded-full">
                         Most Popular
                       </span>
                     </div>
@@ -115,7 +124,7 @@ const Pricing = () => {
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className="font-num text-4xl font-bold text-white">
+                    <span className="font-num text-4xl font-semibold text-white">
                       {tier.price}
                     </span>
                     <span className="text-gray-400 text-sm">{tier.period}</span>
@@ -135,15 +144,18 @@ const Pricing = () => {
                   </ul>
 
                   {/* CTA Button */}
-                  <button
-                    className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
+                  <a
+                    href={whatsappLink(tier)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block text-center w-full py-3 rounded-full font-medium transition-all duration-300 ${
                       tier.popular
                         ? 'bg-gradient-to-r from-accent-purple to-accent-cyan text-white hover:scale-105'
                         : 'border border-white/20 text-white hover:bg-white/5 hover:border-white/40'
                     }`}
                   >
                     Get Started
-                  </button>
+                  </a>
                 </div>
               </TiltCard>
               </div>

@@ -45,7 +45,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 pointer-events-none">
+    <header className="fixed top-3 sm:top-4 left-0 right-0 z-[110] px-3 sm:px-6 pointer-events-none">
       {/* Floating, iOS-style frosted glass pill */}
       <nav
         className={`pointer-events-auto relative mx-auto max-w-5xl rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4
@@ -53,7 +53,7 @@ const Header = () => {
           shadow-[0_8px_32px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(255,255,255,0.05)]
           transition-all duration-500 ${scrolled ? 'bg-white/[0.09] max-w-4xl' : 'bg-white/[0.06]'}`}
       >
-        <a href={`${prefix}#hero`} className="font-heading text-sm sm:text-lg font-extrabold gradient-text tracking-tight whitespace-nowrap">
+        <a href={`${prefix}#hero`} className="font-heading text-sm sm:text-lg font-semibold gradient-text tracking-tight whitespace-nowrap">
           Digital Presence Agency
         </a>
 
