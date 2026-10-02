@@ -7,7 +7,6 @@ import {
   HiPhone,
   HiLocationMarker,
   HiCheck,
-  HiChevronDown,
 } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { rotateInFromLeft, rotateInFromRight, elasticScale, stagger3DContainer } from '../utils/animations';
